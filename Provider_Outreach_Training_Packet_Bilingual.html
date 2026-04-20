@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Provider Outreach Training Packet — Gonzalez & Associates</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #0F6E56; --teal-l: #1D9E75; --teal-p: #E1F5EE; --teal-m: #5DCAA5;
+  --blue: #185FA5; --blue-l: #378ADD; --blue-p: #E6F1FB;
+  --amber: #854F0B; --amber-p: #FAEEDA; --amber-m: #EF9F27;
+  --red-p: #FCEBEB; --red: #A32D2D;
+  --ink: #1A1A18; --ink2: #3D3D3A; --ink3: #6E6E69; --ink4: #9A9A94;
+  --rule: #E2E0D8; --surf: #F8F7F3; --white: #fff;
+  --es: #2C5F8A;
+  --es-bg: #EEF5FB;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; color: var(--ink); background: #D0CEC7; line-height: 1.5; }
+
+/* ── SPANISH INLINE STYLES ── */
+.es {
+  display: block;
+  font-size: 11px;
+  color: var(--es);
+  font-style: italic;
+  margin-top: 3px;
+  line-height: 1.45;
+}
+.es-block {
+  background: var(--es-bg);
+  border-left: 2px solid #90B8E0;
+  padding: 3px 8px;
+  margin-top: 4px;
+  border-radius: 0 4px 4px 0;
+  font-size: 11px;
+  color: var(--es);
+  font-style: italic;
+  line-height: 1.5;
+}
+.lang-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.tag-en { background: rgba(15,110,86,0.12); color: var(--teal); }
+.tag-es { background: rgba(24,95,165,0.12); color: var(--es); }
+
+/* ── PAGE STRUCTURE ── */
+.page { width: 816px; min-height: 1056px; background: var(--white); margin: 0 auto 24px; position: relative; overflow: hidden; }
+.page-inner { padding: 44px 52px 52px; }
+
+/* ── COVER ── */
+.cover { background: #0D1117; display: flex; flex-direction: column; justify-content: space-between; padding: 64px 60px 52px; min-height: 1056px; }
+.cover-stripe { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--teal-l) 0%, var(--blue-l) 65%, transparent 100%); }
+.cover-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-m); margin-bottom: 16px; }
+.cover-title { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 600; line-height: 1.1; color: #F4F2EC; letter-spacing: -0.02em; }
+.cover-title span { color: var(--teal-m); }
+.cover-title-es { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; color: rgba(93,202,165,0.55); margin-top: 6px; font-style: italic; line-height: 1.2; }
+.cover-subtitle { font-size: 13px; font-weight: 300; color: rgba(232,230,224,0.5); margin-top: 10px; max-width: 420px; line-height: 1.6; }
+.cover-subtitle .es { color: rgba(144,184,224,0.65); font-size: 11.5px; margin-top: 5px; }
+.cover-meta { display: flex; gap: 28px; margin-top: 36px; }
+.cover-meta-item { border-left: 2px solid rgba(29,158,117,0.4); padding-left: 12px; }
+.cmi-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,230,224,0.3); margin-bottom: 3px; }
+.cmi-label .es { font-size: 9px; color: rgba(144,184,224,0.4); margin-top: 1px; font-style: normal; }
+.cmi-line { border-bottom: 1px solid rgba(255,255,255,0.12); min-width: 150px; height: 24px; }
+.cover-sections { display: flex; flex-direction: column; gap: 7px; }
+.cover-toc-item { display: flex; align-items: baseline; gap: 10px; }
+.cover-toc-num { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--teal-m); min-width: 22px; }
+.cover-toc-title { font-size: 11px; color: rgba(232,230,224,0.5); }
+.cover-toc-title .es { font-size: 10px; color: rgba(144,184,224,0.45); display: inline; margin-left: 6px; }
+.cover-footer { font-size: 9.5px; color: rgba(232,230,224,0.2); letter-spacing: 0.06em; }
+
+/* ── INTERIOR ── */
+.sec-head { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 22px; }
+.sec-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; color: var(--teal-l); border: 1px solid rgba(29,158,117,0.4); border-radius: 3px; padding: 2px 7px; flex-shrink: 0; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--ink); }
+.sec-title .es { font-size: 14px; color: var(--es); font-style: italic; margin-top: 1px; }
+.sec-subtitle { font-size: 11px; color: var(--ink3); margin-left: auto; font-style: italic; }
+
+.sub-head { font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink4); margin-bottom: 8px; margin-top: 18px; }
+.sub-head .es { font-size: 9px; color: #7AAAD0; letter-spacing: 0.1em; font-style: italic; font-weight: 400; text-transform: none; display: inline-block; margin-top: 2px; }
+.sub-head:first-of-type { margin-top: 0; }
+
+.rule { height: 1px; background: var(--rule); margin: 16px 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* Callout */
+.callout { border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 12px; }
+.callout-teal { background: var(--teal-p); border-left: 3px solid var(--teal-l); }
+.callout-blue { background: var(--blue-p); border-left: 3px solid var(--blue-l); }
+.callout-amber { background: var(--amber-p); border-left: 3px solid var(--amber-m); }
+.callout-red { background: var(--red-p); border-left: 3px solid var(--red); }
+.callout-label { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+.callout-teal .callout-label { color: var(--teal); }
+.callout-blue .callout-label { color: var(--blue); }
+.callout-amber .callout-label { color: var(--amber); }
+.callout-body { font-size: 11.5px; color: var(--ink2); line-height: 1.55; }
+
+/* Card */
+.card { background: var(--surf); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+.card-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+
+/* Bullets */
+.blist { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.bitem { display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; color: var(--ink2); line-height: 1.4; }
+.bdot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.bdot-t { background: var(--teal-l); }
+.bdot-b { background: var(--blue-l); }
+.bdot-a { background: var(--amber-m); }
+
+/* Script */
+.script-box { background: var(--surf); border: 1px solid var(--rule); border-left: 3px solid var(--teal-l); border-radius: 0 8px 8px 0; padding: 10px 12px; margin-bottom: 12px; }
+.script-label { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
+.script-text { font-size: 11.5px; color: var(--ink2); line-height: 1.65; font-style: italic; }
+.script-divider { height: 1px; background: rgba(55,138,221,0.15); margin: 8px 0; }
+
+/* Write-in */
+.write-label { font-size: 9.5px; color: var(--ink4); margin-bottom: 3px; }
+.write-box { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; min-height: 44px; background: #FAFAF8; }
+.write-box-lg { min-height: 66px; }
+
+/* Steps */
+.step-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.step-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; background: var(--teal); color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.step-body { font-size: 11.5px; color: var(--ink2); line-height: 1.45; }
+
+/* Sequence */
+.seq-block { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.seq-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 500; padding: 3px 8px; border-radius: 5px; flex-shrink: 0; min-width: 46px; text-align: center; background: var(--teal-p); color: var(--teal); border: 1px solid rgba(29,158,117,0.25); }
+.seq-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.seq-body { font-size: 11.5px; color: var(--ink2); line-height: 1.45; }
+
+/* Tier table */
+.tier-t { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+.tier-t th { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink4); text-align: left; padding: 7px 10px; background: var(--surf); border-bottom: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+.tier-t td { padding: 9px 10px; border-bottom: 1px solid var(--rule); font-size: 11.5px; color: var(--ink2); vertical-align: top; line-height: 1.4; }
+.tbadge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+.t-plat { background: #F5EDD8; color: #7A5C1E; border: 1px solid #D4AA6A; }
+.t-gold { background: var(--blue-p); color: #1A4A80; border: 1px solid #90B8E0; }
+.t-silv { background: var(--surf); color: #5A5A50; border: 1px solid #C8C5B8; }
+.tdot { width: 5px; height: 5px; border-radius: 50%; }
+
+/* Do/Don't */
+.dos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dos-col { border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); }
+.dos-head { padding: 8px 12px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.dos-g { background: #EAF3DE; color: #3B6D11; border-bottom: 1px solid #C0DD97; }
+.dos-r { background: var(--red-p); color: var(--red); border-bottom: 1px solid #F7C1C1; }
+.dos-body { padding: 9px 12px; background: var(--white); }
+.dos-item { display: flex; align-items: flex-start; gap: 7px; font-size: 11px; color: var(--ink2); margin-bottom: 5px; line-height: 1.4; }
+.dos-icon { flex-shrink: 0; font-size: 11px; }
+
+/* Checklist */
+.checklist { display: flex; flex-direction: column; gap: 7px; }
+.check-item { display: flex; align-items: flex-start; gap: 9px; font-size: 11.5px; color: var(--ink2); line-height: 1.4; }
+.check-box { width: 13px; height: 13px; border: 1.5px solid var(--teal-l); border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+
+/* Objection */
+.obj-block { border-radius: 8px; overflow: hidden; margin-bottom: 10px; border: 1px solid var(--rule); }
+.obj-q { background: var(--surf); padding: 8px 12px; font-size: 11.5px; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--rule); }
+.obj-q-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-right: 6px; }
+.obj-a { padding: 8px 12px; font-size: 11.5px; color: var(--ink2); line-height: 1.5; border-bottom: 1px solid rgba(29,158,117,0.12); }
+.obj-a-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-right: 6px; }
+.obj-practice { background: #FAFAF8; padding: 6px 12px; }
+.obj-practice-label { font-size: 9px; color: var(--ink4); margin-bottom: 2px; }
+
+/* Log table */
+.log-table { width: 100%; border-collapse: collapse; }
+.log-table th { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink4); text-align: left; padding: 7px 8px; background: var(--surf); border: 1px solid var(--rule); }
+.log-table th .es { font-size: 8.5px; letter-spacing: 0.05em; text-transform: none; font-weight: 400; }
+.log-table td { padding: 0; border: 1px solid var(--rule); height: 28px; }
+.log-table tr:nth-child(even) td { background: #FAFAF8; }
+
+/* KPI */
+.kpi-pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surf); border: 1px solid var(--rule); border-radius: 6px; padding: 7px 11px; margin: 3px; }
+.kpi-val { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: var(--teal); }
+.kpi-name { font-size: 10.5px; color: var(--ink3); line-height: 1.3; }
+.kpi-name .es { font-size: 9.5px; color: #7AAAD0; margin-top: 1px; }
+
+/* Footer */
+.page-footer { position: absolute; bottom: 20px; left: 52px; right: 52px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); padding-top: 8px; }
+.pf-firm { font-size: 9px; color: var(--ink4); letter-spacing: 0.05em; }
+.pf-section { font-size: 9px; color: var(--ink4); }
+.pf-num { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--teal-l); }
+
+@media print {
+  body { background: white; }
+  .page { margin: 0; page-break-after: always; box-shadow: none; }
+  .page:last-child { page-break-after: auto; }
+}
+@media screen {
+  .page { box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
+  body { padding: 32px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="page">
+<div class="cover">
+  <div class="cover-stripe"></div>
+  <div>
+    <div class="cover-eyebrow">Gonzalez &amp; Associates, LLC · Marketing Team</div>
+    <div class="cover-title">Provider Outreach<br><span>Training Packet</span></div>
+    <div class="cover-title-es">Manual de Capacitación para Representantes de Campo</div>
+    <div class="cover-subtitle">
+      A field-ready reference for market representatives — scripts, frameworks, objection handling, and accountability standards.
+      <span class="es">Guía de campo para representantes de mercado — guiones, marcos de conversación, manejo de objeciones y estándares de rendición de cuentas.</span>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cmi-label">Rep Name <span class="es">/ Nombre del Representante</span></div>
+        <div class="cmi-line"></div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cmi-label">Territory <span class="es">/ Territorio</span></div>
+        <div class="cmi-line"></div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cmi-label">Start Date <span class="es">/ Fecha de Inicio</span></div>
+        <div class="cmi-line" style="min-width:110px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,230,224,0.3);margin-bottom:12px;">Contents / Contenido</div>
+    <div class="cover-sections">
+      <div class="cover-toc-item"><div class="cover-toc-num">01</div><div class="cover-toc-title">Who We Are &amp; What We Offer <span class="es">/ Quiénes Somos y Qué Ofrecemos</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">02</div><div class="cover-toc-title">Who to Target &amp; What Problems We Solve <span class="es">/ A Quién Contactar y Qué Problemas Resolvemos</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">03</div><div class="cover-toc-title">The Core Pitch <span class="es">/ El Argumento Principal</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">04</div><div class="cover-toc-title">5-Step Conversation Framework <span class="es">/ Marco de Conversación de 5 Pasos</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">05</div><div class="cover-toc-title">Scripts &amp; Practice <span class="es">/ Guiones y Práctica</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">06</div><div class="cover-toc-title">The 1-3-7 Follow-Up Sequence <span class="es">/ Secuencia de Seguimiento 1-3-7</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">07</div><div class="cover-toc-title">Objection Handling <span class="es">/ Manejo de Objeciones</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">08</div><div class="cover-toc-title">Provider Tiering &amp; Growth Strategy <span class="es">/ Clasificación de Proveedores y Estrategia de Crecimiento</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">09</div><div class="cover-toc-title">Do's &amp; Don'ts <span class="es">/ Lo Que Se Debe y No Se Debe Hacer</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">10</div><div class="cover-toc-title">Lawmatics CRM &amp; Field Log <span class="es">/ CRM Lawmatics y Registro de Campo</span></div></div>
+      <div class="cover-toc-item"><div class="cover-toc-num">11</div><div class="cover-toc-title">KPIs &amp; Weekly Targets <span class="es">/ Indicadores Clave y Metas Semanales</span></div></div>
+    </div>
+    <div class="cover-footer" style="margin-top:24px;">Gonzalez &amp; Associates, LLC · Confidential / Confidencial · Internal Use Only / Solo Uso Interno · Q2–Q3 2026</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 2 — SECTION 01 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div class="sec-title">Who We Are &amp; What We Offer
+      <span class="es">Quiénes Somos y Qué Ofrecemos</span>
+    </div>
+  </div>
+
+  <div class="callout callout-teal">
+    <div class="callout-label">Our Mission in One Sentence / Nuestra Misión en Una Frase</div>
+    <div class="callout-body">
+      <span class="lang-tag tag-en">EN</span>"We help medical providers recover revenue they are owed, and we help their injured patients get the legal representation they need."
+      <span class="es-block"><span class="lang-tag tag-es">ES</span>"Ayudamos a los proveedores médicos a recuperar los ingresos que se les deben, y ayudamos a sus pacientes lesionados a obtener la representación legal que necesitan."</span>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:14px;">
+    <div>
+      <div class="sub-head">What We Do for Providers <span class="es">/ Lo Que Hacemos para los Proveedores</span></div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Pursue unpaid and underpaid PIP bills<span class="es">Gestionar facturas PIP impagas y subpagadas</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Handle denials, reductions, and disputes<span class="es">Manejar negaciones, reducciones y disputas</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Reduce administrative burden on staff<span class="es">Reducir la carga administrativa del personal</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Provide a dependable legal partner who understands PIP<span class="es">Ser un socio legal confiable que entiende el PIP</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Offer a "PIP Portfolio Audit" to identify uncollected statutory interest<span class="es">Ofrecer una "Auditoría de Cartera PIP" para identificar intereses estatutarios no cobrados</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-head">What We Do for Patients <span class="es">/ Lo Que Hacemos para los Pacientes</span></div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-b"></div><div>Represent injured clients in personal injury claims<span class="es">Representar a clientes lesionados en reclamaciones de daños personales</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>Help protect the patient from the beginning of the claim<span class="es">Proteger al paciente desde el inicio del proceso</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>Support continuity of care through legal guidance<span class="es">Apoyar la continuidad del tratamiento mediante orientación legal</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>Communicate with both patient and provider<span class="es">Comunicarnos con el paciente y el proveedor</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>Bilingual team — English &amp; Spanish<span class="es">Equipo bilingüe — inglés y español</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">What Makes Us Different — Know These Cold <span class="es">/ Lo Que Nos Distingue — Memorice Esto</span></div>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-title">We Understand PIP <span class="es" style="font-size:10.5px;margin-top:1px;">Entendemos el PIP</span></div>
+      <div style="font-size:11px;color:var(--ink3);line-height:1.5;">We know provider collection issues from the inside. We don't need to be educated — we're already fluent in their world.
+        <span class="es">Conocemos los problemas de cobro de los proveedores desde adentro. No necesitamos que nos expliquen — ya dominamos su mundo.</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">We Communicate <span class="es" style="font-size:10.5px;margin-top:1px;">Nos Comunicamos</span></div>
+      <div style="font-size:11px;color:var(--ink3);line-height:1.5;">Providers stop referring when cases go into a "black hole." We send monthly status reports and "Win" alerts when cases settle.
+        <span class="es">Los proveedores dejan de referir cuando los casos desaparecen. Enviamos reportes mensuales y alertas de "Éxito" cuando se resuelven casos.</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">We're Relationship-Based <span class="es" style="font-size:10.5px;margin-top:1px;">Basados en Relaciones</span></div>
+      <div style="font-size:11px;color:var(--ink3);line-height:1.5;">We build long-term partnerships, not one-time transactions. Every interaction is a step toward a trusted relationship.
+        <span class="es">Construimos asociaciones a largo plazo, no transacciones únicas. Cada interacción es un paso hacia una relación de confianza.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">Practice — How Are You Different? Write Your Answer <span class="es">/ Práctica — ¿En qué se distinguen? Escriba su respuesta</span></div>
+  <div class="write-box write-box-lg"></div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 01 · Who We Are / Quiénes Somos</div>
+  <div class="pf-num">2</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 3 — SECTION 02 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div class="sec-title">Who to Target &amp; What Problems We Solve
+      <span class="es">A Quién Contactar y Qué Problemas Resolvemos</span>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:start;">
+    <div>
+      <div class="sub-head">Primary Target Offices <span class="es">/ Consultorios Objetivo Primarios</span></div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Chiropractic clinics<span class="es">Clínicas quiroprácticas</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Physical therapy clinics<span class="es">Clínicas de fisioterapia</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Pain management clinics<span class="es">Clínicas de manejo del dolor</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Orthopedic practices<span class="es">Consultorios ortopédicos</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>MRI and diagnostic centers<span class="es">Centros de resonancia magnética y diagnóstico</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>Medical offices treating auto accident patients<span class="es">Consultorios médicos que atienden a pacientes de accidentes de tránsito</span></div></div>
+      </div>
+      <div class="sub-head" style="margin-top:14px;">Who to Talk to Inside the Office <span class="es">/ Con Quién Hablar Dentro del Consultorio</span></div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-b"></div><div><strong>Primary:</strong> Office manager, billing manager, owner<span class="es"><strong>Primario:</strong> Gerente de consultorio, gerente de facturación, dueño</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div><strong>Secondary:</strong> Front desk lead, administrator<span class="es"><strong>Secundario:</strong> Líder de recepción, administrador</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div><strong>Note:</strong> Treat gatekeepers with respect — they often are the decision<span class="es"><strong>Nota:</strong> Trate a los recepcionistas con respeto — frecuentemente son quienes deciden</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-head">Common Provider Pain Points <span class="es">/ Problemas Comunes de los Proveedores</span></div>
+      <div class="callout callout-amber">
+        <div class="callout-label">The Problem We Solve / El Problema Que Resolvemos</div>
+        <div class="callout-body">Match your pitch to their specific pain — don't recite a script.
+          <span class="es">Ajuste su argumento al problema específico del proveedor — no recite un guión.</span>
+        </div>
+      </div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Bills are reduced, delayed, or denied<span class="es">Las facturas son reducidas, retrasadas o rechazadas</span></div></div>
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Staff spend too much time chasing payments<span class="es">El personal pierde demasiado tiempo persiguiendo pagos</span></div></div>
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Unsure which claims are worth pursuing<span class="es">No saben qué reclamaciones vale la pena gestionar</span></div></div>
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Never receive updates from their law firm<span class="es">Nunca reciben actualizaciones de su firma de abogados</span></div></div>
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Patients ask for attorney recommendations<span class="es">Los pacientes piden recomendaciones de abogados</span></div></div>
+        <div class="bitem"><div class="bdot bdot-a"></div><div>Worried about firms that won't communicate<span class="es">Preocupados por firmas que no se comunican bien</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">Discovery Questions <span class="es">/ Preguntas de Descubrimiento</span></div>
+  <div class="two-col">
+    <div>
+      <div style="font-size:9px;font-weight:600;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Provider-Side / Lado del Proveedor</div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-t"></div><div>"How are you currently handling unpaid or reduced PIP bills?"<span class="es">"¿Cómo están manejando actualmente las facturas PIP impagas o reducidas?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>"Do you have a firm helping with these issues now?"<span class="es">"¿Tienen actualmente una firma que les ayude con estos problemas?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>"Which carriers give your office the most trouble?"<span class="es">"¿Qué aseguradoras les dan más problemas?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-t"></div><div>"Does your billing team pursue claims internally or externally?"<span class="es">"¿Su equipo de facturación gestiona los reclamos internamente o externamente?"</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:9px;font-weight:600;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Patient Referral Side / Lado de Referidos de Pacientes</div>
+      <div class="blist">
+        <div class="bitem"><div class="bdot bdot-b"></div><div>"Do patients ever ask for attorney recommendations?"<span class="es">"¿Sus pacientes alguna vez piden recomendaciones de abogados?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>"What do you do when a patient needs legal help?"<span class="es">"¿Qué hacen cuando un paciente necesita ayuda legal?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>"Are you looking for a firm that communicates better?"<span class="es">"¿Buscan una firma que se comunique mejor con su consultorio?"</span></div></div>
+        <div class="bitem"><div class="bdot bdot-b"></div><div>"Who makes decisions about outside legal partnerships?"<span class="es">"¿Quién toma decisiones sobre asociaciones legales externas?"</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">My Top 3 Discovery Questions for My Territory <span class="es">/ Mis 3 Preguntas Principales para Mi Territorio</span></div>
+  <div style="display:flex;flex-direction:column;gap:6px;">
+    <div><div class="write-label">1.</div><div class="write-box"></div></div>
+    <div><div class="write-label">2.</div><div class="write-box"></div></div>
+    <div><div class="write-label">3.</div><div class="write-box"></div></div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 02 · Who to Target / A Quién Contactar</div>
+  <div class="pf-num">3</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 4 — SECTION 03 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div class="sec-title">The Core Pitch
+      <span class="es">El Argumento Principal</span>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:start;margin-bottom:14px;">
+    <div>
+      <div class="sub-head">Short Version — Memorize This <span class="es">/ Versión Corta — Memorícela</span></div>
+      <div class="script-box">
+        <div class="script-label">Short Pitch (30 seconds) / Argumento Corto (30 segundos)</div>
+        <div class="script-text">
+          <span class="lang-tag tag-en">EN</span>"We work with medical providers to recover unpaid or underpaid PIP bills, and we also represent their injured patients in personal injury claims. We aim to make life easier for your office while making sure your patients are protected."
+          <div class="script-divider"></div>
+          <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Trabajamos con proveedores médicos para recuperar facturas PIP impagas o subpagadas, y también representamos a sus pacientes lesionados en reclamaciones de daños personales. Nuestro objetivo es facilitar el trabajo de su consultorio mientras protegemos a sus pacientes."</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-head">Long Version — For Decision Makers <span class="es">/ Versión Larga — Para Tomadores de Decisiones</span></div>
+      <div class="script-box">
+        <div class="script-label">Expanded Pitch / Argumento Ampliado</div>
+        <div class="script-text">
+          <span class="lang-tag tag-en">EN</span>"Our firm partners with medical providers in two ways. First, we help offices pursue unpaid or underpaid PIP bills — including denials and reductions — so your team isn't left carrying that burden alone. Second, when your patients are injured and need legal help, we provide experienced representation and strong communication so both the patient and your office feel supported."
+          <div class="script-divider"></div>
+          <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Nuestra firma se asocia con proveedores médicos de dos maneras. Primero, ayudamos a gestionar facturas PIP impagas o subpagadas — incluyendo negaciones y reducciones — para que su equipo no cargue esa responsabilidad solo. Segundo, cuando sus pacientes están lesionados y necesitan ayuda legal, ofrecemos representación experimentada y comunicación constante para que tanto el paciente como su consultorio se sientan respaldados."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">The Tech-Forward Value Hook <span class="es">/ El Gancho de Valor Tecnológico</span></div>
+  <div class="callout callout-teal" style="margin-bottom:10px;">
+    <div class="callout-label">PIP Portfolio Audit Pitch / Argumento de Auditoría de Cartera PIP</div>
+    <div class="callout-body">
+      Don't lead with "better service." Lead with <strong>Financial Transparency and Recovery Speed.</strong> Offer to audit their PIP bills using the firm's interest calculator to show how much statutory interest they may be leaving uncollected.
+      <span class="es">No empiece con "mejor servicio." Comience con <strong>Transparencia Financiera y Velocidad de Recuperación.</strong> Ofrezca auditar sus facturas PIP usando la calculadora de intereses de la firma para mostrar cuánto interés estatutario pueden estar dejando sin cobrar.</span>
+    </div>
+  </div>
+  <div class="script-box">
+    <div class="script-label">Audit Opener / Apertura de Auditoría</div>
+    <div class="script-text">
+      <span class="lang-tag tag-en">EN</span>"We have a tool that shows providers exactly where they're leaving statutory interest uncollected on their PIP bills. I'd love to show you a quick example with one of your files — it only takes about 10 minutes."
+      <div class="script-divider"></div>
+      <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Tenemos una herramienta que le muestra exactamente dónde están dejando intereses estatutarios sin cobrar en sus facturas PIP. Me gustaría mostrarle un ejemplo rápido con uno de sus archivos — solo toma unos 10 minutos."</span>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">Practice — Write Your Short Pitch in Your Own Words <span class="es">/ Práctica — Escriba su argumento corto con sus propias palabras</span></div>
+  <div class="write-box write-box-lg"></div>
+  <div class="sub-head" style="margin-top:10px;">Practice — Write Your Audit Opener <span class="es">/ Práctica — Escriba su apertura de auditoría</span></div>
+  <div class="write-box write-box-lg"></div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 03 · The Core Pitch / El Argumento Principal</div>
+  <div class="pf-num">4</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 5 — SECTION 04 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div class="sec-title">5-Step Conversation Framework
+      <span class="es">Marco de Conversación de 5 Pasos</span>
+    </div>
+  </div>
+
+  <div class="callout callout-amber" style="margin-bottom:14px;">
+    <div class="callout-label">Golden Rule / Regla de Oro</div>
+    <div class="callout-body">A successful visit is not only one that produces an immediate case. It is one that moves the relationship forward — even by one step. Always leave with a clear next action.
+      <span class="es">Una visita exitosa no es solo la que genera un caso inmediato. Es la que hace avanzar la relación — aunque sea un paso. Siempre salga con una acción concreta de seguimiento.</span>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <div class="step-title">Introduce <span class="es" style="font-size:11px;font-style:italic;display:inline;margin-left:6px;color:var(--es);">/ Preséntese</span></div>
+      <div class="step-body">State your name, the firm, and one sentence on what we do. Be warm and professional.
+        <span class="es">Diga su nombre, la firma y una frase sobre lo que hacemos. Sea cálido y profesional.</span>
+      </div>
+      <div class="script-box" style="margin-top:6px;">
+        <div class="script-label">Sample / Ejemplo</div>
+        <div class="script-text">
+          <span class="lang-tag tag-en">EN</span>"Hello, my name is [Name], and I'm with The Law Offices of Gonzalez &amp; Associates. We work closely with medical providers on unpaid PIP bills and help their accident patients with injury claims."
+          <div class="script-divider"></div>
+          <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Hola, mi nombre es [Nombre] y soy de Los Bufetes de Abogados Gonzalez &amp; Asociados. Trabajamos con proveedores médicos en facturas PIP impagas y ayudamos a sus pacientes accidentados con reclamaciones de lesiones."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Discover <span class="es" style="font-size:11px;font-style:italic;display:inline;margin-left:6px;color:var(--es);">/ Descubra</span></div>
+      <div class="step-body">Lead with a discovery question. You need to know their pain before you can solve it.
+        <span class="es">Comience con una pregunta de descubrimiento. Necesita conocer su problema antes de poder resolverlo.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title">Listen First <span class="es" style="font-size:11px;font-style:italic;display:inline;margin-left:6px;color:var(--es);">/ Escuche Primero</span></div>
+      <div class="step-body">Let them talk. The best reps ask two questions and listen for five minutes before pitching anything.
+        <span class="es">Déjelos hablar. Los mejores representantes hacen dos preguntas y escuchan cinco minutos antes de presentar nada.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <div class="step-title">Match the Pitch <span class="es" style="font-size:11px;font-style:italic;display:inline;margin-left:6px;color:var(--es);">/ Adapte el Argumento</span></div>
+      <div class="step-body">
+        <div class="two-col" style="gap:8px;margin-top:4px;">
+          <div class="callout callout-teal" style="margin:0;padding:8px 11px;">
+            <div class="callout-label">If they mention unpaid bills / Si mencionan facturas impagas</div>
+            <div class="callout-body">"We can help and take that pressure off your office — and we have an audit tool to find uncollected interest."
+              <span class="es">"Podemos ayudar y quitarle esa presión a su consultorio — y tenemos una herramienta de auditoría para encontrar intereses no cobrados."</span>
+            </div>
+          </div>
+          <div class="callout callout-blue" style="margin:0;padding:8px 11px;">
+            <div class="callout-label">If they mention patients / Si mencionan pacientes</div>
+            <div class="callout-body">"We help injured patients from the start so your office always has a reliable legal point of contact."
+              <span class="es">"Ayudamos a los pacientes lesionados desde el inicio para que su consultorio siempre tenga un contacto legal confiable."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-row" style="margin-bottom:0;">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <div class="step-title">Secure the Next Step <span class="es" style="font-size:11px;font-style:italic;display:inline;margin-left:6px;color:var(--es);">/ Asegure el Próximo Paso</span></div>
+      <div class="step-body">Never leave without a clear next step, even if it's small.
+        <span class="es">Nunca salga sin un próximo paso claro, aunque sea pequeño.</span>
+      </div>
+      <div class="script-box" style="margin-top:6px;">
+        <div class="script-label">Examples / Ejemplos</div>
+        <div class="script-text">
+          <span class="lang-tag tag-en">EN</span>"Who is the best person to follow up with?" / "Can I return Thursday to meet the billing manager?"
+          <div class="script-divider"></div>
+          <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"¿Con quién es mejor hacer el seguimiento?" / "¿Puedo regresar el jueves para reunirme con el gerente de facturación?"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 04 · Conversation Framework / Marco de Conversación</div>
+  <div class="pf-num">5</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 6 — SECTION 05 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div class="sec-title">Scripts &amp; Practice
+      <span class="es">Guiones y Práctica</span>
+    </div>
+  </div>
+
+  <div class="sub-head">Script 1 — Front Desk Introduction <span class="es">/ Guión 1 — Introducción en Recepción</span></div>
+  <div class="script-box">
+    <div class="script-label">Read Aloud, Then Personalize / Lea en Voz Alta, Luego Personalice</div>
+    <div class="script-text">
+      <span class="lang-tag tag-en">EN</span>"Hello, my name is [Name], and I'm with The Law Offices of Gonzalez &amp; Associates. We work with medical providers on unpaid PIP bills and also help their accident patients with injury claims. I wanted to briefly introduce our firm and leave some information for your office."
+      <div class="script-divider"></div>
+      <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Hola, mi nombre es [Nombre] y soy de Los Bufetes de Abogados Gonzalez &amp; Asociados. Trabajamos con proveedores médicos en facturas PIP impagas y también ayudamos a sus pacientes accidentados con reclamaciones de lesiones. Quería presentar brevemente nuestra firma y dejar información para su consultorio."</span>
+    </div>
+  </div>
+  <div class="sub-head">My Version / Mi Versión</div>
+  <div class="write-box"></div>
+
+  <div class="rule"></div>
+
+  <div class="sub-head">Script 2 — Office Manager Conversation <span class="es">/ Guión 2 — Conversación con el Gerente del Consultorio</span></div>
+  <div class="script-box">
+    <div class="script-label">For the Decision Maker / Para el Tomador de Decisiones</div>
+    <div class="script-text">
+      <span class="lang-tag tag-en">EN</span>"We partner with medical providers in two ways. We help with unpaid or underpaid PIP matters, and we serve as a trusted legal resource for patients who need representation after an accident. Our goal is to make things easier for your office while supporting your patients."
+      <div class="script-divider"></div>
+      <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Nos asociamos con proveedores médicos de dos maneras. Ayudamos con asuntos PIP impagos o subpagados, y somos un recurso legal confiable para los pacientes que necesitan representación después de un accidente. Nuestro objetivo es facilitar las cosas para su consultorio mientras apoyamos a sus pacientes."</span>
+    </div>
+  </div>
+  <div class="sub-head">My Version / Mi Versión</div>
+  <div class="write-box"></div>
+
+  <div class="rule"></div>
+
+  <div class="sub-head">Script 3 — Follow-Up Call <span class="es">/ Guión 3 — Llamada de Seguimiento</span></div>
+  <div class="script-box">
+    <div class="script-label">Day 3–5 After First Visit / Días 3–5 Después de la Primera Visita</div>
+    <div class="script-text">
+      <span class="lang-tag tag-en">EN</span>"Hello, this is [Name] from Gonzalez &amp; Associates. I recently stopped by and wanted to follow up to see whether there were any provider billing issues or patient referral needs we could assist with. I'd also love to set up a quick audit of one of your bills to show you exactly what we can recover."
+      <div class="script-divider"></div>
+      <span class="lang-tag tag-es">ES</span><span style="color:var(--es);">"Hola, habla [Nombre] de Gonzalez &amp; Asociados. Pasé por su consultorio recientemente y quería hacer seguimiento para ver si hay algún problema de facturación o necesidad de referidos de pacientes en la que podamos ayudar. También me encantaría programar una auditoría rápida de una de sus facturas para mostrarles exactamente lo que podemos recuperar."</span>
+    </div>
+  </div>
+  <div class="sub-head">My Version / Mi Versión</div>
+  <div class="write-box"></div>
+
+  <div class="rule"></div>
+  <div class="callout callout-amber">
+    <div class="callout-label">Practice Standard / Estándar de Práctica</div>
+    <div class="callout-body">Read each script aloud until it sounds natural — not recited. Your script should sound like <em>you</em>. Role-play with a colleague at least once before going to the field.
+      <span class="es">Lea cada guión en voz alta hasta que suene natural — no recitado. Su guión debe sonar como <em>usted</em>. Haga práctica de roles con un compañero al menos una vez antes de ir al campo.</span>
+    </div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 05 · Scripts &amp; Practice / Guiones y Práctica</div>
+  <div class="pf-num">6</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 7 — SECTION 06 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div class="sec-title">The 1-3-7 Follow-Up Sequence
+      <span class="es">La Secuencia de Seguimiento 1-3-7</span>
+    </div>
+    <div class="sec-subtitle">Mandatory after every first visit / Obligatorio después de cada primera visita</div>
+  </div>
+
+  <div class="callout callout-amber" style="margin-bottom:14px;">
+    <div class="callout-label">Why This Sequence Exists / Por Qué Existe Esta Secuencia</div>
+    <div class="callout-body">New relationships die in the "nice to meet you" phase. This sequence creates three structured touchpoints that separate you from every other firm that visited that week.
+      <span class="es">Las nuevas relaciones mueren en la fase de "mucho gusto." Esta secuencia crea tres puntos de contacto estructurados que lo distinguen de todas las demás firmas que visitaron esa semana.</span>
+    </div>
+  </div>
+
+  <div class="seq-block">
+    <div class="seq-badge">Day 1<br><span style="font-size:9px;color:var(--es);font-style:italic;">Día 1</span></div>
+    <div class="seq-content">
+      <div class="seq-title">Thank You Email <span class="es" style="display:inline;font-size:11px;margin-left:6px;color:var(--es);">/ Correo de Agradecimiento</span></div>
+      <div class="seq-body">Send a personalized thank-you email with your digital business card and a link to the firm's brand welcome video.
+        <span class="es">Envíe un correo de agradecimiento personalizado con su tarjeta de presentación digital y un enlace al video de bienvenida de la firma.</span>
+      </div>
+      <div style="margin-top:6px;font-size:10.5px;color:var(--ink4);">Checklist: <span style="color:var(--ink2);">✓ Digital business card / Tarjeta digital &nbsp; ✓ Brand video link / Enlace al video &nbsp; ✓ Personalized / Personalizado</span></div>
+    </div>
+  </div>
+
+  <div class="seq-block">
+    <div class="seq-badge">Day 3<br><span style="font-size:9px;color:var(--es);font-style:italic;">Día 3</span></div>
+    <div class="seq-content">
+      <div class="seq-title">First File Kit Drop-Off <span class="es" style="display:inline;font-size:11px;margin-left:6px;color:var(--es);">/ Entrega del Kit de Primer Expediente</span></div>
+      <div class="seq-body">Return in person with the physical "First File Kit." Showing up makes you real.
+        <span class="es">Regrese en persona con el "Kit de Primer Expediente" físico. Presentarse en persona lo hace real.</span>
+      </div>
+      <div class="callout callout-teal" style="margin-top:6px;padding:7px 10px;">
+        <div class="callout-label">Kit Contains / El Kit Contiene</div>
+        <div class="callout-body">Referral form / Formulario de referido &nbsp;·&nbsp; HIPAA release / Autorización HIPAA &nbsp;·&nbsp; Intake instructions / Instrucciones de admisión &nbsp;·&nbsp; Business card / Tarjeta &nbsp;·&nbsp; Recovery Roadmap</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seq-block">
+    <div class="seq-badge">Day 7<br><span style="font-size:9px;color:var(--es);font-style:italic;">Día 7</span></div>
+    <div class="seq-content">
+      <div class="seq-title">The "Quick Audit" Call <span class="es" style="display:inline;font-size:11px;margin-left:6px;color:var(--es);">/ La Llamada de "Auditoría Rápida"</span></div>
+      <div class="seq-body">Call to schedule a "Quick Audit" of one pending or denied PIP bill. This is what generates the first case.
+        <span class="es">Llame para programar una "Auditoría Rápida" de una factura PIP pendiente o denegada. Esto es lo que genera el primer caso.</span>
+      </div>
+      <div style="margin-top:6px;font-size:11px;color:var(--ink2);font-style:italic;">"I'd love to take 10 minutes to show you exactly what we can recover on one of your pending files — no commitment, just a demonstration."
+        <span class="es" style="font-style:italic;">"Me gustaría tomar 10 minutos para mostrarle exactamente lo que podemos recuperar en uno de sus expedientes pendientes — sin compromiso, solo una demostración."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-amber">
+    <div class="callout-label">The 21-Day Rule — Non-Negotiable / La Regla de los 21 Días — No Negociable</div>
+    <div class="callout-body">If a new provider has not sent a case within 21 days of your first visit, escalate immediately. Request an attorney-level introduction or shift to a different contact within the practice. Log the strategy change in Lawmatics.
+      <span class="es">Si un nuevo proveedor no ha enviado un caso dentro de los 21 días de su primera visita, escale de inmediato. Solicite una introducción a nivel de abogado o contacte a una persona diferente dentro del consultorio. Registre el cambio de estrategia en Lawmatics.</span>
+    </div>
+  </div>
+
+  <div class="sub-head" style="margin-top:12px;">My Next 3 New Contacts — Sequence Start Dates <span class="es">/ Mis Próximos 3 Nuevos Contactos — Fechas de Inicio</span></div>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Office Name<br><span class="es">Nombre del Consultorio</span></th>
+        <th>Visit Date<br><span class="es">Fecha de Visita</span></th>
+        <th>Day 1<br><span class="es">Día 1</span></th>
+        <th>Day 3<br><span class="es">Día 3</span></th>
+        <th>Day 7<br><span class="es">Día 7</span></th>
+        <th>Notes / Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 06 · 1-3-7 Sequence / Secuencia 1-3-7</div>
+  <div class="pf-num">7</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 8 — SECTION 07 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <div class="sec-title">Objection Handling
+      <span class="es">Manejo de Objeciones</span>
+    </div>
+    <div class="sec-subtitle">Know these before you go to the field / Memorícelas antes de salir al campo</div>
+  </div>
+
+  <div class="callout callout-teal" style="margin-bottom:12px;">
+    <div class="callout-label">The Rule / La Regla</div>
+    <div class="callout-body">Every objection is an opportunity to demonstrate responsiveness. Acknowledge → Bridge → Keep the door open. Always leave with a next step.
+      <span class="es">Cada objeción es una oportunidad para demostrar capacidad de respuesta. Reconozca → Conecte → Deje la puerta abierta. Siempre salga con un próximo paso.</span>
+    </div>
+  </div>
+
+  <div class="obj-block">
+    <div class="obj-q"><span class="obj-q-tag">Objection / Objeción</span>"We already work with a law firm." / "Ya trabajamos con una firma de abogados."</div>
+    <div class="obj-a"><span class="obj-a-tag">Response / Respuesta</span>
+      "That makes sense — many offices do. We're always happy to be a resource if you ever need a second opinion or a firm with stronger communication. I'd still love to leave our information."
+      <span class="es-block">"Tiene sentido — muchos consultorios lo hacen. Siempre estamos disponibles si alguna vez necesitan una segunda opinión o una firma con mejor comunicación. Me gustaría dejarles nuestra información de todas formas."</span>
+    </div>
+    <div class="obj-practice"><div class="obj-practice-label">Your version / Su versión →</div><div style="min-height:20px;"></div></div>
+  </div>
+
+  <div class="obj-block">
+    <div class="obj-q"><span class="obj-q-tag">Objection / Objeción</span>"We handle billing issues internally." / "Manejamos los problemas de facturación internamente."</div>
+    <div class="obj-a"><span class="obj-a-tag">Response / Respuesta</span>
+      "Understood — many offices do at first. We can still help when certain claims become too time-consuming or are repeatedly underpaid. We take that burden off your team."
+      <span class="es-block">"Entendido — muchos consultorios lo hacen al principio. Aún podemos ayudar cuando ciertos reclamos se vuelven demasiado lentos o son repetidamente subpagados. Quitamos esa carga de su equipo."</span>
+    </div>
+    <div class="obj-practice"><div class="obj-practice-label">Your version / Su versión →</div><div style="min-height:20px;"></div></div>
+  </div>
+
+  <div class="obj-block">
+    <div class="obj-q"><span class="obj-q-tag">Objection / Objeción</span>"We don't usually refer attorneys." / "Generalmente no referimos abogados."</div>
+    <div class="obj-a"><span class="obj-a-tag">Response / Respuesta</span>
+      "I understand. Our goal is simply to be a trusted option if a patient ever asks for help or if a situation comes up where you want to connect them with someone reliable."
+      <span class="es-block">"Lo entiendo. Nuestro objetivo es simplemente ser una opción confiable si un paciente alguna vez necesita ayuda o si surge una situación donde quieran conectarlos con alguien de confianza."</span>
+    </div>
+    <div class="obj-practice"><div class="obj-practice-label">Your version / Su versión →</div><div style="min-height:20px;"></div></div>
+  </div>
+
+  <div class="obj-block">
+    <div class="obj-q"><span class="obj-q-tag">Objection / Objeción</span>"We're too busy right now." / "Estamos muy ocupados en este momento."</div>
+    <div class="obj-a"><span class="obj-a-tag">Response / Respuesta</span>
+      "Of course — I'll leave something brief behind and follow up with the right person another day. What's the best time to come back?"
+      <span class="es-block">"Por supuesto — dejaré algo breve y haré seguimiento con la persona indicada otro día. ¿Cuál es el mejor momento para regresar?"</span>
+    </div>
+    <div class="obj-practice"><div class="obj-practice-label">Your version / Su versión →</div><div style="min-height:20px;"></div></div>
+  </div>
+
+  <div class="obj-block">
+    <div class="obj-q"><span class="obj-q-tag">Objection / Objeción</span>"How are you different from other firms?" / "¿En qué se diferencian de otras firmas?"</div>
+    <div class="obj-a"><span class="obj-a-tag">Response / Respuesta</span>
+      "We focus on being responsive, knowledgeable, and easy to work with. We understand both the provider side and the patient side — and your office will always know what's happening with your cases."
+      <span class="es-block">"Nos enfocamos en ser receptivos, conocedores y fáciles de trabajar. Entendemos tanto el lado del proveedor como el del paciente — y su consultorio siempre sabrá qué está pasando con sus casos."</span>
+    </div>
+    <div class="obj-practice"><div class="obj-practice-label">Your version / Su versión →</div><div style="min-height:20px;"></div></div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 07 · Objection Handling / Manejo de Objeciones</div>
+  <div class="pf-num">8</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 9 — SECTION 08 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <div class="sec-title">Provider Tiering &amp; Growth Strategy
+      <span class="es">Clasificación de Proveedores y Estrategia de Crecimiento</span>
+    </div>
+  </div>
+
+  <div class="callout callout-teal" style="margin-bottom:12px;">
+    <div class="callout-label">Why We Tier / Por Qué Clasificamos</div>
+    <div class="callout-body">Not all providers are created equal. Treating a Platinum account the same as a Silver account wastes your best relationships and stalls growth.
+      <span class="es">No todos los proveedores son iguales. Tratar una cuenta Platino igual que una Plata desperdicia sus mejores relaciones y frena el crecimiento.</span>
+    </div>
+  </div>
+
+  <table class="tier-t" style="margin-bottom:14px;">
+    <thead>
+      <tr>
+        <th>Tier / Nivel</th>
+        <th>Criteria / Criterio</th>
+        <th>Your Action Plan / Su Plan de Acción</th>
+        <th>Cadence / Frecuencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tbadge t-plat"><span class="tdot" style="background:#C9943A;"></span>Platinum</span></td>
+        <td>5+ cases/mo consistently<br><span class="es">5+ casos/mes consistentemente</span></td>
+        <td>Quarterly Financial Recovery Report showing interest collected · Personal attorney touchpoint<br><span class="es">Reporte trimestral de recuperación financiera mostrando intereses cobrados · Contacto personal con abogado</span></td>
+        <td>Quarterly<br><span class="es">Trimestral</span></td>
+      </tr>
+      <tr>
+        <td><span class="tbadge t-gold"><span class="tdot" style="background:var(--blue-l);"></span>Gold / Oro</span></td>
+        <td>1–3 cases/mo<br><span class="es">1–3 casos/mes</span></td>
+        <td>Quarterly lunch · Quarterly check-in · "Lunch &amp; Learn" for billing staff · Monthly Referral Report<br><span class="es">Almuerzo trimestral · Check-in trimestral · Almuerzo formativo para personal de facturación · Reporte mensual de referidos</span></td>
+        <td>Quarterly lunch + check-in<br><span class="es">Almuerzo + check-in trimestral</span></td>
+      </tr>
+      <tr>
+        <td><span class="tbadge t-silv"><span class="tdot" style="background:#9A9A90;"></span>Silver / Plata</span></td>
+        <td>Dormant or inconsistent<br><span class="es">Inactivo o inconsistente</span></td>
+        <td>Monthly "Legal Update" newsletter · Drop-in to re-verify contacts · Re-pitch PIP Audit if 60-day no activity<br><span class="es">Boletín mensual · Visitas periódicas para verificar contactos · Re-presentar Auditoría PIP si no hay actividad en 60 días</span></td>
+        <td>Monthly newsletter + drop-in<br><span class="es">Boletín mensual + visita ocasional</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col" style="margin-bottom:14px;align-items:start;">
+    <div>
+      <div class="sub-head">Closed-Loop Feedback System <span class="es">/ Sistema de Retroalimentación Cerrado</span></div>
+      <div class="callout callout-teal">
+        <div class="callout-label">Stop the "Black Hole" Problem / Elimine el Problema del "Hueco Negro"</div>
+        <div class="callout-body">Send monthly Referral Status Reports via Lawmatics. When a PIP suit settles, send a "Win" Success Alert immediately.
+          <span class="es">Envíe reportes mensuales de estado de referidos vía Lawmatics. Cuando se resuelva un caso PIP, envíe una Alerta de "Éxito" de inmediato.</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-head">Education as Retention <span class="es">/ Educación como Retención</span></div>
+      <div class="callout callout-blue">
+        <div class="callout-label">Become Their Compliance Partner / Sea su Socio de Cumplimiento</div>
+        <div class="callout-body">Train front-desk staff to identify BI/PI cases vs. standard PIP intakes. Host quarterly Zoom briefings on Florida PIP statute changes.
+          <span class="es">Capacite al personal de recepción para identificar casos BI/PI vs. admisiones PIP estándar. Organice sesiones trimestrales en Zoom sobre cambios en el estatuto PIP de Florida.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">My Provider Tier List <span class="es">/ Mi Lista de Clasificación de Proveedores</span></div>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Office Name<br><span class="es">Consultorio</span></th>
+        <th>Tier<br><span class="es">Nivel</span></th>
+        <th>Avg Cases/Mo<br><span class="es">Casos Prom/Mes</span></th>
+        <th>My Action This Month<br><span class="es">Mi Acción Este Mes</span></th>
+        <th>Next Visit<br><span class="es">Próxima Visita</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 08 · Provider Tiering / Clasificación de Proveedores</div>
+  <div class="pf-num">9</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 10 — SECTION 09 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">09</div>
+    <div class="sec-title">Do's &amp; Don'ts
+      <span class="es">Lo Que Se Debe y No Se Debe Hacer</span>
+    </div>
+    <div class="sec-subtitle">Field standards / Estándares de campo</div>
+  </div>
+
+  <div class="dos-grid" style="margin-bottom:16px;">
+    <div class="dos-col">
+      <div class="dos-head dos-g">Do / Haga</div>
+      <div class="dos-body">
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Be polished and punctual at every visit — you represent the firm<span class="es">Sea presentable y puntual en cada visita — usted representa a la firma</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Learn the office's needs before pitching — ask, then listen<span class="es">Conozca las necesidades del consultorio antes de presentar — pregunte, luego escuche</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Keep your pitch clear, short, and matched to their pain<span class="es">Mantenga su argumento claro, breve y adaptado a su problema</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Respect gatekeepers — they often are the real decision<span class="es">Respete a los recepcionistas — frecuentemente son quienes deciden</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Follow through on every promise — if you say Thursday, be there<span class="es">Cumpla cada promesa — si dice el jueves, esté allí</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Log every visit in Lawmatics with a "Next Action" date<span class="es">Registre cada visita en Lawmatics con una fecha de "Próxima Acción"</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Leave every visit with a clear next step<span class="es">Salga de cada visita con un próximo paso claro</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:#3B6D11;">✓</div><div>Build trust over time — this is a long game<span class="es">Construya confianza con el tiempo — esto es un juego largo</span></div></div>
+      </div>
+    </div>
+    <div class="dos-col">
+      <div class="dos-head dos-r">Don't / No Haga</div>
+      <div class="dos-body">
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Give legal advice — identify needs and connect only<span class="es">No dé consejos legales — solo identifique necesidades y conecte</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Overpromise results — promise responsiveness only<span class="es">No prometa resultados excesivos — solo prometa capacidad de respuesta</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Speak negatively about competing firms — ever<span class="es">No hable negativamente de firmas competidoras — nunca</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Push materials on someone clearly unavailable or rushed<span class="es">No presione con materiales a alguien claramente ocupado o apresurado</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Talk too much before you've listened<span class="es">No hable demasiado antes de haber escuchado</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Skip the CRM log — if it's not in Lawmatics, it didn't happen<span class="es">No omita el registro en el CRM — si no está en Lawmatics, no sucedió</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Wait more than 21 days without a case before shifting strategy<span class="es">No espere más de 21 días sin un caso antes de cambiar de estrategia</span></div></div>
+        <div class="dos-item"><div class="dos-icon" style="color:var(--red);">✗</div><div>Let 30 days pass without visiting an active provider<span class="es">No deje pasar 30 días sin visitar a un proveedor activo</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">Leave-Behind Checklist — Bring These to Every Visit <span class="es">/ Lista de Materiales — Traiga Esto a Cada Visita</span></div>
+  <div class="two-col">
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div>Firm overview / one-pager<span class="es">Resumen de la firma / página de presentación</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>"Recovery Roadmap" one-pager<span class="es">Página "Hoja de Ruta de Recuperación"</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>"First File Kit" assembled and ready<span class="es">"Kit de Primer Expediente" preparado y listo</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>Business card (yours)<span class="es">Tarjeta de presentación (la suya)</span></div></div>
+    </div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div>General firm contact information<span class="es">Información de contacto general de la firma</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>Intake / referral instructions<span class="es">Instrucciones de admisión / referido</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>Brand video link ready to share<span class="es">Enlace al video de la firma listo para compartir</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div>Lawmatics access on device to log on the spot<span class="es">Acceso a Lawmatics en dispositivo para registrar en el momento</span></div></div>
+    </div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 09 · Do's &amp; Don'ts / Lo Que Se Debe y No Se Debe Hacer</div>
+  <div class="pf-num">10</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 11 — SECTION 10 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">10</div>
+    <div class="sec-title">Lawmatics CRM &amp; Field Log
+      <span class="es">CRM Lawmatics y Registro de Campo</span>
+    </div>
+  </div>
+
+  <div class="callout callout-amber" style="margin-bottom:14px;">
+    <div class="callout-label">The Rule / La Regla</div>
+    <div class="callout-body">If it's not logged in Lawmatics, it didn't happen. Log every visit before end of day.
+      <span class="es">Si no está registrado en Lawmatics, no sucedió. Registre cada visita antes del final del día.</span>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:start;margin-bottom:14px;">
+    <div>
+      <div class="sub-head">Required Fields — Every Visit <span class="es">/ Campos Obligatorios — Cada Visita</span></div>
+      <div class="checklist">
+        <div class="check-item"><div class="check-box"></div><div>Office name &amp; specialty<span class="es">Nombre y especialidad del consultorio</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Address<span class="es">Dirección</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Date of visit<span class="es">Fecha de visita</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Your name (representative)<span class="es">Su nombre (representante)</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Person met + their role<span class="es">Persona atendida + su cargo</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Current law firm relationship (if known)<span class="es">Relación con firma legal actual (si se conoce)</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Provider claim interest (yes / no / maybe)<span class="es">Interés en reclamaciones del proveedor (sí / no / quizás)</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Patient referral interest (yes / no / maybe)<span class="es">Interés en referidos de pacientes (sí / no / quizás)</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Follow-up date — required, no exceptions<span class="es">Fecha de seguimiento — obligatoria, sin excepciones</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div>Notes from visit<span class="es">Notas de la visita</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sub-head">Automated Triggers <span class="es">/ Alertas Automáticas</span></div>
+      <div class="callout callout-amber" style="margin-bottom:8px;">
+        <div class="callout-label">30-Day Inactivity Alert / Alerta de 30 Días de Inactividad</div>
+        <div class="callout-body">If a provider hasn't been visited in 30 days, an alert fires for the outreach lead. No provider goes cold without a deliberate decision.
+          <span class="es">Si un proveedor no ha sido visitado en 30 días, se activa una alerta para el líder de contacto. Ningún proveedor se enfría sin una decisión deliberada.</span>
+        </div>
+      </div>
+      <div class="callout callout-blue" style="margin-bottom:8px;">
+        <div class="callout-label">21-Day No-Case Trigger / Alerta de 21 Días Sin Caso</div>
+        <div class="callout-body">New provider hasn't sent a case in 21 days — strategy must shift immediately. Log the change.
+          <span class="es">Un nuevo proveedor no ha enviado un caso en 21 días — la estrategia debe cambiar de inmediato. Registre el cambio.</span>
+        </div>
+      </div>
+      <div class="callout callout-teal">
+        <div class="callout-label">Weekly CRM Audit / Auditoría Semanal del CRM</div>
+        <div class="callout-body">Outreach lead reviews all records weekly. Missing fields and stale Next Action dates are flagged.
+          <span class="es">El líder de contacto revisa todos los registros semanalmente. Los campos incompletos y fechas vencidas son señalados.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">Daily Field Visit Log — This Week <span class="es">/ Registro Diario de Visitas de Campo — Esta Semana</span></div>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Date<br><span class="es">Fecha</span></th>
+        <th>Office Name<br><span class="es">Consultorio</span></th>
+        <th>Person Met / Role<br><span class="es">Persona / Cargo</span></th>
+        <th>Interest?<br><span class="es">¿Interés?</span></th>
+        <th>Follow-Up Date<br><span class="es">Fecha Seguimiento</span></th>
+        <th>Notes / Next Action<br><span class="es">Notas / Próxima Acción</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 10 · CRM &amp; Field Log / CRM y Registro de Campo</div>
+  <div class="pf-num">11</div>
+</div>
+</div>
+
+
+<!-- ══════════════════ PAGE 12 — SECTION 11 ══════════════════ -->
+<div class="page">
+<div class="page-inner">
+  <div class="sec-head">
+    <div class="sec-num">11</div>
+    <div class="sec-title">KPIs &amp; Weekly Targets
+      <span class="es">Indicadores Clave y Metas Semanales</span>
+    </div>
+  </div>
+
+  <div class="callout callout-teal" style="margin-bottom:14px;">
+    <div class="callout-label">The Mindset Shift / El Cambio de Mentalidad</div>
+    <div class="callout-body">Case volume is the result. Face-to-face meetings, audit requests, and provider stickiness are the behaviors that create it. Track your behaviors — the cases will follow.
+      <span class="es">El volumen de casos es el resultado. Las reuniones cara a cara, las solicitudes de auditoría y la fidelización de proveedores son los comportamientos que lo crean. Registre sus comportamientos — los casos vendrán.</span>
+    </div>
+  </div>
+
+  <div class="sub-head">Your Weekly Minimums <span class="es">/ Sus Mínimos Semanales</span></div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+    <div class="kpi-pill"><div class="kpi-val">10+</div><div class="kpi-name">face-to-face meetings / week<span class="es">reuniones en persona / semana</span></div></div>
+    <div class="kpi-pill"><div class="kpi-val">5+</div><div class="kpi-name">new offices contacted / week<span class="es">nuevos consultorios contactados / semana</span></div></div>
+    <div class="kpi-pill"><div class="kpi-val">100%</div><div class="kpi-name">of visits logged in Lawmatics same day<span class="es">de visitas registradas en Lawmatics el mismo día</span></div></div>
+    <div class="kpi-pill"><div class="kpi-val">100%</div><div class="kpi-name">of new contacts in 1-3-7 sequence<span class="es">de nuevos contactos en secuencia 1-3-7</span></div></div>
+    <div class="kpi-pill"><div class="kpi-val">≤21</div><div class="kpi-name">days first visit → first case (target)<span class="es">días primera visita → primer caso (meta)</span></div></div>
+    <div class="kpi-pill" style="border-color:rgba(29,158,117,0.35);"><div class="kpi-val" style="color:var(--blue);">Zero</div><div class="kpi-name">30-day inactivity alerts fired<span class="es">alertas de 30 días de inactividad</span></div></div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sub-head">My Weekly Tracker <span class="es">/ Mi Registro Semanal</span></div>
+  <table class="log-table" style="margin-bottom:14px;">
+    <thead>
+      <tr>
+        <th>Week of<br><span class="es">Semana del</span></th>
+        <th>Visits<br><span class="es">Visitas</span></th>
+        <th>New Offices<br><span class="es">Nuevos Consult.</span></th>
+        <th>Audits Pitched<br><span class="es">Auditorías</span></th>
+        <th>1-3-7 Started<br><span class="es">1-3-7 Iniciadas</span></th>
+        <th>Cases In<br><span class="es">Casos Recibidos</span></th>
+        <th>Notes<br><span class="es">Notas</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-amber">
+    <div class="callout-label">90-Day Quarterly Goal / Meta Trimestral de 90 Días</div>
+    <div class="callout-body">+13 new cases this quarter · 70% from existing providers (+9) · 30% from new chiropractors (+4) · 2–3 new offices converted to consistent senders
+      <span class="es">+13 nuevos casos este trimestre · 70% de proveedores existentes (+9) · 30% de nuevos quiroprácticos (+4) · 2–3 nuevos consultorios convertidos en remitentes consistentes</span>
+    </div>
+  </div>
+</div>
+<div class="page-footer">
+  <div class="pf-firm">Gonzalez &amp; Associates · Provider Outreach Training Packet / Manual de Capacitación</div>
+  <div class="pf-section">Section 11 · KPIs &amp; Weekly Targets / Indicadores Clave y Metas Semanales</div>
+  <div class="pf-num">12</div>
+</div>
+</div>
+
+</body>
+</html>
