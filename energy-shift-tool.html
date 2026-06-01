@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Energy Shift — A Working Tool for Lawyers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ede1;
+    --paper-2:#ece4d4;
+    --ink:#20180f;
+    --ink-soft:#5a4f41;
+    --ink-faint:#8a7d6b;
+    --line:#d8cdb8;
+    --gold:#a8742d;
+    --gold-deep:#7e5417;
+    /* energy ramp: cool/heavy (low) -> warm/light (high) */
+    --l1:#42566b;
+    --l2:#8a4836;
+    --l3:#94794a;
+    --l4:#5d7a52;
+    --l5:#b9842b;
+    --l6:#2f8a85;
+    --l7:#d9b24b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(168,116,45,.10), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(28px,5vw,72px) clamp(20px,4vw,48px) 96px}
+
+  /* ---------- Header ---------- */
+  header{margin-bottom:clamp(36px,5vw,56px);position:relative}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:600;margin-bottom:18px;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:clamp(2.4rem,6vw,4.1rem);line-height:1.02;
+    letter-spacing:-.015em;max-width:14ch;
+  }
+  h1 em{font-style:italic;color:var(--gold-deep)}
+  .lede{
+    margin-top:22px;max-width:60ch;font-size:clamp(1.02rem,1.6vw,1.18rem);
+    color:var(--ink-soft);
+  }
+  .lede strong{color:var(--ink);font-weight:600}
+
+  /* ---------- Section labels ---------- */
+  .step-label{
+    display:flex;align-items:baseline;gap:14px;
+    margin:clamp(40px,5vw,60px) 0 22px;
+  }
+  .step-num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;
+    color:var(--gold-deep);min-width:1.4em;
+  }
+  .step-title{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.3rem,2.4vw,1.7rem);
+    letter-spacing:-.01em;
+  }
+  .step-sub{color:var(--ink-faint);font-size:.95rem;margin-top:-12px;margin-bottom:8px;padding-left:calc(1.4em + 14px)}
+
+  /* ---------- Ladder ---------- */
+  .ladder{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:var(--paper-2);
+  }
+  .rung{
+    display:grid;grid-template-columns:54px 1fr;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .rung:last-child{border-bottom:none}
+  .rung-no{
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:#fff;
+  }
+  .rung-body{padding:11px 16px}
+  .rung-body .rb-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px}
+  .rung-name{font-weight:700;font-size:.98rem}
+  .rung-mantra{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:.95rem}
+  .rung-band{margin-left:auto;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:2px 9px;border-radius:99px}
+  .band-cat{background:rgba(138,72,54,.14);color:#8a4836}
+  .band-ana{background:rgba(47,138,133,.14);color:#216b66}
+  .rung-desc{font-size:.86rem;color:var(--ink-faint);margin-top:2px}
+
+  /* ---------- Arena cards ---------- */
+  .arena-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;
+  }
+  .arena-card{
+    text-align:left;cursor:pointer;font-family:inherit;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:13px;
+    padding:18px 18px 20px;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s,background .25s;
+    position:relative;overflow:hidden;
+  }
+  .arena-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+  .arena-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px -16px rgba(32,24,15,.4);border-color:var(--gold)}
+  .arena-card:hover::after,.arena-card.active::after{transform:scaleY(1)}
+  .arena-card.active{background:#fff;border-color:var(--gold);box-shadow:0 12px 28px -16px rgba(32,24,15,.4)}
+  .arena-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:-.01em}
+  .arena-tag{font-size:.82rem;color:var(--ink-faint);margin-top:5px}
+
+  /* ---------- Result panel ---------- */
+  .panel{
+    margin-top:26px;border:1px solid var(--line);border-radius:16px;
+    background:#fff;overflow:hidden;
+    opacity:0;transform:translateY(10px);
+    animation:rise .45s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+  .panel-head{
+    padding:24px clamp(20px,3vw,32px) 22px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,var(--paper-2),#fff);
+  }
+  .panel-head h3{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em;
+  }
+  .needs-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{
+    font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:99px;
+    display:inline-flex;align-items:center;gap:7px;color:#fff;
+  }
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.85)}
+  .chip-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;align-self:center;margin-right:2px}
+
+  .panel-body{padding:clamp(20px,3vw,32px);display:grid;gap:22px}
+  .block .bh{
+    display:flex;align-items:center;gap:9px;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:7px;
+  }
+  .bh .ic{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;font-size:.7rem;color:#fff;font-family:'Fraunces',serif}
+  .block p{color:var(--ink-soft);max-width:64ch}
+  .block.trap .ic{background:var(--l2)}
+  .block.trap .bh{color:var(--l2)}
+  .block.move .ic{background:var(--l6)}
+  .block.move .bh{color:#216b66}
+
+  /* ---------- current-level picker ---------- */
+  .picker-wrap{border-top:1px dashed var(--line);padding-top:22px}
+  .picker-q{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;margin-bottom:14px}
+  .lvl-row{display:flex;flex-wrap:wrap;gap:8px}
+  .lvl-btn{
+    cursor:pointer;font-family:inherit;font-weight:600;font-size:.85rem;
+    border:1px solid var(--line);background:var(--paper);border-radius:10px;
+    padding:9px 13px;display:flex;align-items:center;gap:8px;transition:.2s;color:var(--ink);
+  }
+  .lvl-btn .sw{width:11px;height:11px;border-radius:3px}
+  .lvl-btn:hover{border-color:var(--ink-soft);transform:translateY(-2px)}
+  .lvl-btn.sel{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .lvl-btn.sel .sw{box-shadow:0 0 0 2px var(--paper)}
+
+  /* ---------- shift result ---------- */
+  .shift{
+    margin-top:20px;border-radius:13px;padding:22px clamp(18px,2.5vw,26px);
+    background:linear-gradient(135deg,var(--paper-2),var(--paper));
+    border:1px solid var(--line);
+    opacity:0;transform:translateY(8px);animation:rise .4s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .shift-head{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:4px}
+  .shift-head b{color:var(--gold-deep)}
+  .shift-recog{color:var(--ink-faint);font-size:.9rem;font-style:italic;margin-bottom:18px}
+  .move-step{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+  .move-step:first-of-type{border-top:none}
+  .ms-num{
+    font-family:'Fraunces',serif;font-weight:600;color:#fff;width:30px;height:30px;
+    border-radius:50%;display:grid;place-items:center;font-size:.92rem;
+  }
+  .ms-text{font-size:.96rem}
+  .ms-text b{font-weight:700}
+  .ms-text .say{
+    display:block;margin-top:6px;font-family:'Fraunces',serif;font-style:italic;
+    color:var(--gold-deep);font-size:1rem;padding-left:13px;border-left:2px solid var(--gold);
+  }
+  .already{font-size:.95rem;color:var(--ink-soft)}
+  .already b{color:var(--ink)}
+
+  /* reset / footer note */
+  .reset-note{
+    margin-top:26px;padding:16px 18px;border:1px dashed var(--line);border-radius:11px;
+    background:var(--paper-2);font-size:.9rem;color:var(--ink-soft);
+  }
+  .reset-note b{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
+  footer{margin-top:60px;border-top:1px solid var(--line);padding-top:22px;color:var(--ink-faint);font-size:.82rem;max-width:70ch}
+  footer em{font-family:'Fraunces',serif}
+
+  @media(max-width:560px){
+    .rung{grid-template-columns:44px 1fr}
+    .rung-band{margin-left:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">The 7 Levels of Energy · A Working Tool</div>
+    <h1>Different tables ask for <em>different energy.</em></h1>
+    <p class="lede">Every relationship in this work pulls a default energy out of you — and it's rarely the one the moment needs. This tool does one thing: it helps you <strong>name where you are, see what the interaction actually calls for, and shift on purpose.</strong> Pick who's across the table.</p>
+  </header>
+
+  <!-- LADDER -->
+  <div class="step-label"><span class="step-num">Ref.</span><span class="step-title">The ladder, at a glance</span></div>
+  <p class="step-sub">Levels 1–2 drain (catabolic). Levels 3–7 build (anabolic). None is "bad" — what matters is choosing it.</p>
+  <div class="ladder" id="ladder"></div>
+
+  <!-- ARENA -->
+  <div class="step-label"><span class="step-num">01</span><span class="step-title">Who's across the table?</span></div>
+  <div class="arena-grid" id="arenaGrid"></div>
+
+  <!-- RESULT -->
+  <div id="result"></div>
+
+  <footer>
+    <em>How to use it:</em> Reach for this in the ninety seconds before you pick up the phone, hit reply, or walk into a room — not after. The goal isn't to live at one level forever; it's to stop letting whoever's loudest choose yours. Built on iPEC's 7 Levels of Energy framework.
+  </footer>
+</div>
+
+<script>
+const LEVELS = [
+  {n:1, name:"Victim",     mantra:"\u201cWhy me?\u201d",            band:"cat", color:"var(--l1)",
+   desc:"Powerless, overwhelmed, blaming circumstances.",
+   recog:"I feel stuck and resentful \u2014 like this is happening TO me.",
+   exit:{lead:"Reclaim one piece of control.", body:"Plant your feet, sit up, and shrink the problem to its next move.", say:"What is the single next action that's actually mine to take?"}},
+  {n:2, name:"Combat",     mantra:"\u201cAre you kidding me?\u201d", band:"cat", color:"var(--l2)",
+   desc:"Anger, defensiveness, blame, win/lose.",
+   recog:"I'm gripping the phone. I want to fire back. They're the enemy.",
+   exit:{lead:"Interrupt yourself before you act.", body:"Don't send, don't answer for ten seconds. Exhale longer than you inhale. Name it silently: 'I'm angry.'", say:"What outcome do I actually want once this is over?"}},
+  {n:3, name:"Coping",     mantra:"\u201cIt is what it is.\u201d",  band:"ana", color:"var(--l3)",
+   desc:"Tolerating, pushing through, going through the motions.",
+   recog:"I'm just getting through it \u2014 eyes down, grind it out.",
+   exit:{lead:"Trade tolerating for choosing.", body:"You're not stuck with this. Find the lever you've been ignoring.", say:"I'm not stuck with this \u2014 I'm choosing how to handle it."}},
+  {n:4, name:"Care",       mantra:"\u201cHow can I help?\u201d",    band:"ana", color:"var(--l4)",
+   desc:"Empathy, service, loyalty \u2014 with an over-give risk.",
+   recog:"I want to fix it for them or take it off their plate.",
+   exit:{lead:"Check the boundary before you absorb.", body:"Care is the right fuel, but rescuing isn't helping. Decide what's actually yours to carry.", say:"What do they need \u2014 and what's mine to give?"}},
+  {n:5, name:"Solution",   mantra:"\u201cWhere's the win?\u201d",   band:"ana", color:"var(--l5)",
+   desc:"Opportunity, options, calm problem-solving.",
+   recog:"I'm calm and looking for the path forward.",
+   arrive:{lead:"Orient to the next move, not the wound.", say:"What does a win look like for everyone here? Give me three options."}},
+  {n:6, name:"Connection", mantra:"\u201cWe're in this together.\u201d", band:"ana", color:"var(--l6)",
+   desc:"Shared purpose, partnership, trust.",
+   recog:"I see the bigger thing we're building and who's in it with me.",
+   arrive:{lead:"Make the other person a partner, not an obstacle.", say:"What are we actually building together here?"}},
+  {n:7, name:"Bliss",      mantra:"\u201cIt simply is.\u201d",       band:"ana", color:"var(--l7)",
+   desc:"Non-judgment, flow. Rare and brief \u2014 don't chase it.",
+   recog:"Fully present, no friction, no score being kept.",
+   arrive:{lead:"You can't summon this on command \u2014 aim for 5 or 6.", say:""}},
+];
+const L = n => LEVELS[n-1];
+
+const ARENAS = {
+  clients:{
+    name:"Clients", tag:"injured, anxious, all-in",
+    needs:[4,5], primary:5,
+    trap:"Your client arrives at Level 1 (fear \u2014 \u201cwhy me\u201d) or Level 2 (rage \u2014 \u201cmake them pay\u201d). Match their energy and you both sink. Over-rescue at Level 4 and the boundaries go: midnight texts, over-promised outcomes, every case carried like it's your own.",
+    move:"Acknowledge their energy out loud \u2014 then model one level up. Don't argue them out of fear; give them somewhere higher to stand: a path, a next step, a realistic picture of what a win looks like. You become the calm reference point that lets them climb."
+  },
+  employees:{
+    name:"Employees", tag:"your team, your reports",
+    needs:[5,6], primary:5,
+    trap:"Level 2 when something slips (a sharp tone, blame) and Level 4 quietly reabsorbing the work you just delegated. Both teach the team the same thing: they can't be trusted to rise \u2014 which guarantees they won't.",
+    move:"Coach, don't rescue. Ask what they'd try before you supply the answer. Frame the fire drill as a chance to step up. Remember the team mirrors your energy faster than it follows your instructions \u2014 your Monday tone is the office's Wednesday baseline."
+  },
+  coworkers:{
+    name:"Co-workers", tag:"the people beside you",
+    needs:[4,6], primary:6,
+    trap:"Level 2 turf \u2014 who owns this, who gets the credit, defensiveness about your lane. It's the fastest way to turn an ally into a rival over something neither of you will remember next quarter.",
+    move:"Name the shared goal first, before roles. Anchor on the outcome you both want, and let credit take care of itself \u2014 it's abundant when the work lands. Connection beats competition every time the two of you have to keep working together."
+  },
+  peers:{
+    name:"Peers", tag:"other attorneys, your equals",
+    needs:[5,6], primary:5,
+    trap:"Level 2 comparison and competition \u2014 or its mirror, Level 1, quietly measuring yourself short against them. Both distort your judgment and make you smaller in the room than you are.",
+    move:"Play the long game: referrals, reputation, and what you can learn outlast any single comparison. Trade scorekeeping for curiosity \u2014 \u201cwhat can I take from how they handled that?\u201d \u2014 and the whole network gets warmer toward you."
+  },
+  opposing:{
+    name:"Opposing Counsel", tag:"the toggle",
+    needs:[2,5], primary:5, special:true,
+    trap:"Reactive Level 2. Anger that leaks your buttons, escalates a matter that wanted a phone call, and tells a sharp adversary exactly which lever moves you. The danger isn't using Level 2 \u2014 it's letting them choose it for you.",
+    move:"This is the one table where Level 2 is a legitimate tool \u2014 but only on purpose. First step OFF autopilot (pause, breathe, name it). THEN decide: does this moment want pressure, or a path to yes? The same email carries two completely different energies. You pick which one it carries."
+  }
+};
+
+const bandTag = b => b==="cat"
+  ? '<span class="rung-band band-cat">Catabolic</span>'
+  : '<span class="rung-band band-ana">Anabolic</span>';
+
+// ---- render ladder
+document.getElementById('ladder').innerHTML = LEVELS.map(l=>`
+  <div class="rung">
+    <div class="rung-no" style="background:${l.color}">${l.n}</div>
+    <div class="rung-body">
+      <div class="rb-top">
+        <span class="rung-name">${l.name}</span>
+        <span class="rung-mantra">${l.mantra}</span>
+        ${bandTag(l.band)}
+      </div>
+      <div class="rung-desc">${l.desc}</div>
+    </div>
+  </div>`).join('');
+
+// ---- render arenas
+const grid = document.getElementById('arenaGrid');
+grid.innerHTML = Object.entries(ARENAS).map(([k,a])=>`
+  <button class="arena-card" data-key="${k}">
+    <div class="arena-name">${a.name}</div>
+    <div class="arena-tag">${a.tag}</div>
+  </button>`).join('');
+
+let activeKey = null;
+grid.addEventListener('click', e=>{
+  const btn = e.target.closest('.arena-card');
+  if(!btn) return;
+  activeKey = btn.dataset.key;
+  [...grid.children].forEach(c=>c.classList.toggle('active', c===btn));
+  renderPanel(activeKey);
+});
+
+function chip(n){
+  const l=L(n);
+  return `<span class="chip" style="background:${l.color}"><span class="dot"></span>${l.n} · ${l.name}</span>`;
+}
+
+function renderPanel(key){
+  const a = ARENAS[key];
+  const needsChips = a.needs.map(chip).join('');
+  const result = document.getElementById('result');
+  result.innerHTML = `
+    <div class="panel">
+      <div class="panel-head">
+        <h3>${a.name}</h3>
+        <div class="needs-row"><span class="chip-label">Energy this calls for</span>${needsChips}</div>
+      </div>
+      <div class="panel-body">
+        <div class="block trap">
+          <div class="bh"><span class="ic">!</span>The pull to watch for</div>
+          <p>${a.trap}</p>
+        </div>
+        <div class="block move">
+          <div class="bh"><span class="ic">&#10003;</span>The leadership move</div>
+          <p>${a.move}</p>
+        </div>
+        <div class="picker-wrap">
+          <div class="picker-q">Right now, before this interaction \u2014 where are you?</div>
+          <div class="lvl-row" id="lvlRow">
+            ${LEVELS.map(l=>`<button class="lvl-btn" data-n="${l.n}"><span class="sw" style="background:${l.color}"></span>${l.n} · ${l.name}</button>`).join('')}
+          </div>
+          <div id="shift"></div>
+        </div>
+      </div>
+    </div>`;
+  result.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  const row = document.getElementById('lvlRow');
+  row.addEventListener('click', e=>{
+    const b = e.target.closest('.lvl-btn');
+    if(!b) return;
+    [...row.children].forEach(c=>c.classList.toggle('sel', c===b));
+    renderShift(key, +b.dataset.n);
+  });
+}
+
+function moveStep(num, color, text){
+  return `<div class="move-step"><div class="ms-num" style="background:${color}">${num}</div><div class="ms-text">${text}</div></div>`;
+}
+
+function renderShift(key, current){
+  const a = ARENAS[key];
+  const target = a.primary;
+  const cur = L(current);
+  const tgt = L(target);
+  const shift = document.getElementById('shift');
+  let steps = '';
+  let head = '';
+  let recog = cur.recog ? `<div class="shift-recog">Sounds like: \u201c${cur.recog}\u201d</div>` : '';
+
+  // ---------- opposing counsel: the deliberate toggle ----------
+  if(a.special){
+    head = `<div class="shift-head">From <b>Level ${current} · ${cur.name}</b> \u2014 step off autopilot, then choose your weapon.</div>`;
+    let n=1, s='';
+    if(current<=2){
+      s += moveStep(n++, cur.color, `<b>${cur.exit.lead}</b> ${cur.exit.body}<span class="say">${cur.exit.say}</span>`);
+    } else {
+      s += moveStep(n++, cur.color, `<b>You're already off the reactive floor.</b> Good \u2014 you have a clear head to decide from. Don't waste it defaulting to nice <em>or</em> aggressive.`);
+    }
+    s += moveStep(n++, "var(--l2)", `<b>If the moment wants leverage</b> \u2014 step <em>deliberately</em> into Level 2. Controlled, specific, deadline-backed. Pressure as a tool, not a tantrum.<span class="say">Here's the line, here's the consequence, here's the date.</span>`);
+    s += moveStep(n++, "var(--l5)", `<b>If the moment wants resolution</b> \u2014 climb to Level 5. A settlement isn't surrender; it's a win they can close their file on too.<span class="say">What number ends this well for both sides?</span>`);
+    steps = s;
+    shift.innerHTML = `<div class="shift">${head}${recog}${steps}</div>`;
+    return;
+  }
+
+  // ---------- already at/above target ----------
+  if(current>=target){
+    head = `<div class="shift-head">You're at <b>Level ${current} · ${cur.name}</b> \u2014 right where this table needs you.</div>`;
+    const body = `<p class="already">Don't shift \u2014 <b>protect it.</b> The only risk now is sliding down when the interaction gets tense. If you feel the pull toward the trap above, use the ten-second reset below and come back to this level on purpose.</p>`;
+    shift.innerHTML = `<div class="shift">${head}${recog}${body}</div>`;
+    return;
+  }
+
+  // ---------- climb: exit current, arrive at target ----------
+  head = `<div class="shift-head">Shift from <b>Level ${current} · ${cur.name}</b> &rarr; <b>Level ${target} · ${tgt.name}</b></div>`;
+  let n=1, s='';
+  s += moveStep(n++, cur.color, `<b>${cur.exit.lead}</b> ${cur.exit.body}<span class="say">${cur.exit.say}</span>`);
+  // if jumping more than one anabolic rung, add a bridge through 5 when target is 6
+  if(target===6 && current<5){
+    const five=L(5);
+    s += moveStep(n++, five.color, `<b>${five.arrive.lead}</b> Get to options first \u2014 it's the doorway.<span class="say">${five.arrive.say}</span>`);
+  }
+  s += moveStep(n++, tgt.color, `<b>Land here:</b> ${tgt.arrive.lead}${tgt.arrive.say?`<span class="say">${tgt.arrive.say}</span>`:''}`);
+  steps = s;
+
+  const reset = `<div class="reset-note"><b>The ten-second reset</b> &mdash; if you can't think your way up, drop into your body first: one slow breath out (longer than the breath in), unclench your jaw and your grip, name the feeling silently. The level shift gets easy once the adrenaline drops.</div>`;
+  shift.innerHTML = `<div class="shift">${head}${recog}${steps}</div>${reset}`;
+}
+</script>
+</body>
+</html>
