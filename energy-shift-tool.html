@@ -58,6 +58,19 @@
   }
   .lede strong{color:var(--ink);font-weight:600}
 
+  /* ---------- how-to instruction block ---------- */
+  .how-to{
+    margin-bottom:clamp(20px,3vw,32px);
+    background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:13px;padding:18px clamp(18px,2.5vw,24px);
+  }
+  .how-to .ht-label{
+    display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;color:var(--gold-deep);margin-bottom:8px;
+  }
+  .how-to p{color:var(--ink-soft);max-width:74ch;font-size:.98rem}
+  .how-to b{color:var(--ink);font-weight:600}
+
   /* ---------- Section labels ---------- */
   .step-label{
     display:flex;align-items:baseline;gap:14px;
@@ -148,45 +161,6 @@
   .block.move .ic{background:var(--l6)}
   .block.move .bh{color:#216b66}
 
-  /* ---------- current-level picker ---------- */
-  .picker-wrap{border-top:1px dashed var(--line);padding-top:22px}
-  .picker-q{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;margin-bottom:14px}
-  .lvl-row{display:flex;flex-wrap:wrap;gap:8px}
-  .lvl-btn{
-    cursor:pointer;font-family:inherit;font-weight:600;font-size:.85rem;
-    border:1px solid var(--line);background:var(--paper);border-radius:10px;
-    padding:9px 13px;display:flex;align-items:center;gap:8px;transition:.2s;color:var(--ink);
-  }
-  .lvl-btn .sw{width:11px;height:11px;border-radius:3px}
-  .lvl-btn:hover{border-color:var(--ink-soft);transform:translateY(-2px)}
-  .lvl-btn.sel{border-color:var(--ink);background:var(--ink);color:var(--paper)}
-  .lvl-btn.sel .sw{box-shadow:0 0 0 2px var(--paper)}
-
-  /* ---------- shift result ---------- */
-  .shift{
-    margin-top:20px;border-radius:13px;padding:22px clamp(18px,2.5vw,26px);
-    background:linear-gradient(135deg,var(--paper-2),var(--paper));
-    border:1px solid var(--line);
-    opacity:0;transform:translateY(8px);animation:rise .4s cubic-bezier(.2,.8,.2,1) forwards;
-  }
-  .shift-head{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:4px}
-  .shift-head b{color:var(--gold-deep)}
-  .shift-recog{color:var(--ink-faint);font-size:.9rem;font-style:italic;margin-bottom:18px}
-  .move-step{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
-  .move-step:first-of-type{border-top:none}
-  .ms-num{
-    font-family:'Fraunces',serif;font-weight:600;color:#fff;width:30px;height:30px;
-    border-radius:50%;display:grid;place-items:center;font-size:.92rem;
-  }
-  .ms-text{font-size:.96rem}
-  .ms-text b{font-weight:700}
-  .ms-text .say{
-    display:block;margin-top:6px;font-family:'Fraunces',serif;font-style:italic;
-    color:var(--gold-deep);font-size:1rem;padding-left:13px;border-left:2px solid var(--gold);
-  }
-  .already{font-size:.95rem;color:var(--ink-soft)}
-  .already b{color:var(--ink)}
-
   /* reset / footer note */
   .reset-note{
     margin-top:26px;padding:16px 18px;border:1px dashed var(--line);border-radius:11px;
@@ -195,6 +169,74 @@
   .reset-note b{color:var(--ink);font-family:'Fraunces',serif;font-weight:600}
   footer{margin-top:60px;border-top:1px solid var(--line);padding-top:22px;color:var(--ink-faint);font-size:.82rem;max-width:70ch}
   footer em{font-family:'Fraunces',serif}
+
+  /* ---------- W.I.N. banner in header ---------- */
+  .tap-banner{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  }
+  .tb-item{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:10px;
+    padding:9px 14px;font-size:.86rem;color:var(--ink-soft);
+    display:flex;align-items:baseline;gap:7px;
+  }
+  .tb-item b{
+    font-family:'Fraunces',serif;font-size:1.05rem;color:#fff;background:var(--gold);
+    width:1.5em;height:1.5em;border-radius:6px;display:inline-grid;place-items:center;flex:none;
+  }
+  .tb-item i{font-style:italic;color:var(--ink-faint)}
+
+  /* ---------- W.I.N. walkthrough ---------- */
+  .tap-wrap{border-top:1px dashed var(--line);padding-top:22px;display:grid;gap:16px}
+  .tap-intro{font-family:'Fraunces',serif;font-size:1.12rem}
+  .tap-intro b{color:var(--gold-deep)}
+  .tap-step{
+    display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:start;
+    background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;
+  }
+  .tap-letter{
+    width:46px;height:46px;border-radius:11px;color:#fff;
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;
+    display:grid;place-items:center;
+  }
+  .tap-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;margin-bottom:5px}
+  .tap-desc{color:var(--ink-soft);font-size:.96rem;max-width:62ch}
+  .tap-desc b{color:var(--ink)}
+  .tap-q{margin-top:10px;font-family:'Fraunces',serif;font-style:italic;color:var(--gold-deep);font-size:1rem;padding-left:13px;border-left:2px solid var(--gold)}
+  .tap-recog{color:var(--ink-faint);font-size:.92rem;font-style:italic;margin:2px 0 4px;padding-left:62px}
+  .tap-pair{margin-top:12px;font-size:.92rem;color:var(--ink-soft)}
+  .tap-pair b{color:var(--ink)}
+  .say-inline{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-deep)}
+
+  .listen-block{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+  .listen-q{font-family:'Fraunces',serif;font-style:italic;font-size:1rem;margin-bottom:10px;color:var(--ink)}
+  .listen-grid{display:grid;gap:8px}
+  @media(min-width:560px){.listen-grid{grid-template-columns:repeat(3,1fr)}}
+  .listen-mode{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:.82rem;color:var(--ink-faint);
+  }
+  .listen-mode b{display:block;color:var(--ink);font-size:.9rem;margin-bottom:3px}
+
+  .lvl-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .lvl-btn{
+    cursor:pointer;font-family:inherit;font-weight:600;font-size:.84rem;
+    border:1px solid var(--line);background:var(--paper-2);border-radius:10px;
+    padding:9px 13px;display:flex;align-items:center;gap:8px;transition:.2s;color:var(--ink);
+  }
+  .lvl-btn .sw{width:11px;height:11px;border-radius:3px}
+  .lvl-btn:hover{border-color:var(--ink-soft);transform:translateY(-2px)}
+  .lvl-btn.sel{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .lvl-btn.sel .sw{box-shadow:0 0 0 2px var(--paper)}
+
+  #tapResult{display:grid;gap:16px;animation:rise .4s cubic-bezier(.2,.8,.2,1)}
+  .pivot-fork{display:grid;gap:12px;margin-top:12px}
+  @media(min-width:620px){.pivot-fork{grid-template-columns:1fr 1fr}}
+  .fork-opt,.pivot-land{
+    border:1px solid var(--line);border-left-width:4px;border-radius:11px;
+    padding:14px 16px;font-size:.92rem;color:var(--ink-soft);background:var(--paper-2);
+  }
+  .pivot-land{margin-top:10px}
+  .fork-head{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;margin-bottom:6px}
+  .say{display:block;margin-top:9px;font-family:'Fraunces',serif;font-style:italic;color:var(--gold-deep);font-size:.98rem;padding-left:12px;border-left:2px solid var(--gold)}
 
   /* ---------- two-column tool layout ---------- */
   .tool-layout{display:grid;gap:clamp(24px,3vw,44px)}
@@ -219,10 +261,20 @@
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">The 7 Levels of Energy · A Working Tool</div>
-    <h1>Different tables ask for <em>different energy.</em></h1>
-    <p class="lede">Every relationship in this work pulls a default energy out of you — and it's rarely the one the moment needs. This tool does one thing: it helps you <strong>name where you are, see what the interaction actually calls for, and shift on purpose.</strong> Pick who's across the table.</p>
+    <div class="eyebrow">Lawyer Mind, Leader Energy</div>
+    <h1>Read the room. Navigate your energy. <em>Lead the moment.</em></h1>
+    <p class="lede">Every table pulls a default energy out of you — and it's rarely the one the moment needs. <strong>W.I.N. is the pause button between reaction and intention: Witness the energy, Interpret the moment, Navigate the shift.</strong> Pick who's across the table and walk it through.</p>
+    <div class="tap-banner">
+      <span class="tb-item"><b>W</b> Witness <i>— what energy am I bringing? what's across from me?</i></span>
+      <span class="tb-item"><b>I</b> Interpret <i>— is it helping or hurting? what does this need?</i></span>
+      <span class="tb-item"><b>N</b> Navigate <i>— choose the energy that serves the outcome.</i></span>
+    </div>
   </header>
+
+  <div class="how-to">
+    <span class="ht-label">How to use it</span>
+    <p>Reach for this in the ninety seconds <b>before</b> you pick up the phone, hit reply, or walk into a room — not after. Pick who's across the table, then run W.I.N.: <b>Witness</b> the energy you're bringing and the one across from you, <b>Interpret</b> whether it's helping or hurting and what the moment needs, and <b>Navigate</b> the shift to the energy that serves the outcome. You don't have to match the energy across the table — you regulate your own instead of absorbing theirs.</p>
+  </div>
 
   <div class="tool-layout">
     <div class="col-ladder">
@@ -241,73 +293,87 @@
   </div>
 
   <footer>
-    <em>How to use it:</em> Reach for this in the ninety seconds before you pick up the phone, hit reply, or walk into a room — not after. The goal isn't to live at one level forever; it's to stop letting whoever's loudest choose yours. Built on iPEC's 7 Levels of Energy framework.
+    Leadership isn't always having the perfect response — it's learning to witness the energy, interpret what the moment needs, and navigate the shift with intention. <em>Lawyer Mind, Leader Energy</em> · built on iPEC's Energy Leadership™ model · FJA Leadership Academy Capstone.
   </footer>
 </div>
 
 <script>
 const LEVELS = [
-  {n:1, name:"Victim",     mantra:"\u201cWhy me?\u201d",            band:"cat", color:"var(--l1)",
-   desc:"Powerless, overwhelmed, blaming circumstances.",
-   recog:"I feel stuck and resentful \u2014 like this is happening TO me.",
-   exit:{lead:"Reclaim one piece of control.", body:"Plant your feet, sit up, and shrink the problem to its next move.", say:"What is the single next action that's actually mine to take?"}},
-  {n:2, name:"Combat",     mantra:"\u201cAre you kidding me?\u201d", band:"cat", color:"var(--l2)",
-   desc:"Anger, defensiveness, blame, win/lose.",
-   recog:"I'm gripping the phone. I want to fire back. They're the enemy.",
-   exit:{lead:"Interrupt yourself before you act.", body:"Don't send, don't answer for ten seconds. Exhale longer than you inhale. Name it silently: 'I'm angry.'", say:"What outcome do I actually want once this is over?"}},
-  {n:3, name:"Coping",     mantra:"\u201cIt is what it is.\u201d",  band:"ana", color:"var(--l3)",
-   desc:"Tolerating, pushing through, going through the motions.",
-   recog:"I'm just getting through it \u2014 eyes down, grind it out.",
-   exit:{lead:"Trade tolerating for choosing.", body:"You're not stuck with this. Find the lever you've been ignoring.", say:"I'm not stuck with this \u2014 I'm choosing how to handle it."}},
-  {n:4, name:"Care",       mantra:"\u201cHow can I help?\u201d",    band:"ana", color:"var(--l4)",
-   desc:"Empathy, service, loyalty \u2014 with an over-give risk.",
-   recog:"I want to fix it for them or take it off their plate.",
-   exit:{lead:"Check the boundary before you absorb.", body:"Care is the right fuel, but rescuing isn't helping. Decide what's actually yours to carry.", say:"What do they need \u2014 and what's mine to give?"}},
-  {n:5, name:"Solution",   mantra:"\u201cWhere's the win?\u201d",   band:"ana", color:"var(--l5)",
-   desc:"Opportunity, options, calm problem-solving.",
-   recog:"I'm calm and looking for the path forward.",
-   arrive:{lead:"Orient to the next move, not the wound.", say:"What does a win look like for everyone here? Give me three options."}},
-  {n:6, name:"Connection", mantra:"\u201cWe're in this together.\u201d", band:"ana", color:"var(--l6)",
-   desc:"Shared purpose, partnership, trust.",
-   recog:"I see the bigger thing we're building and who's in it with me.",
-   arrive:{lead:"Make the other person a partner, not an obstacle.", say:"What are we actually building together here?"}},
-  {n:7, name:"Bliss",      mantra:"\u201cIt simply is.\u201d",       band:"ana", color:"var(--l7)",
-   desc:"Non-judgment, flow. Rare and brief \u2014 don't chase it.",
-   recog:"Fully present, no friction, no score being kept.",
-   arrive:{lead:"You can't summon this on command \u2014 aim for 5 or 6.", say:""}},
+  {n:1, name:"Powerless",      mantra:"\u201cThis is happening to me.\u201d", band:"cat", color:"var(--l1)",
+   desc:"Overwhelmed, stuck, at the mercy of circumstances.",
+   serves:"Rarely \u2014 occasionally a signal that you need to step back and regroup.",
+   limits:"Paralysis, victimhood, surrendering your agency in the moment.",
+   recog:"I feel stuck and overwhelmed \u2014 like this is happening TO me.",
+   pivot:{lead:"Reclaim one piece of control.", say:"What is the single next action that's actually mine to take?"}},
+  {n:2, name:"Conflict",       mantra:"\u201cI need to win. This is their fault.\u201d", band:"cat", color:"var(--l2)",
+   desc:"Anger, blame, control, win/lose.",
+   serves:"Setting boundaries, protecting standards, acting with urgency.",
+   limits:"Blaming, controlling, intimidating, creating fear.",
+   recog:"I want to win, push back, or pin the blame on someone.",
+   pivot:{lead:"Interrupt the reaction before you act on it.", say:"What outcome do I actually want once this is over?"}},
+  {n:3, name:"Responsibility",  mantra:"\u201cLet's fix this and move forward.\u201d", band:"ana", color:"var(--l3)",
+   desc:"Ownership, execution, solving the problem in front of you.",
+   serves:"Executing, deciding, solving the problem in front of you.",
+   limits:"Ignoring emotion, going purely transactional.",
+   recog:"I'm focused on the fix \u2014 just get it solved and move on.",
+   pivot:{lead:"Get clear and take ownership of the next step.", say:"What needs to happen now \u2014 and what's the first move?"}},
+  {n:4, name:"Compassion",      mantra:"\u201cHow can I support you?\u201d", band:"ana", color:"var(--l4)",
+   desc:"Empathy, mentoring, trust, morale.",
+   serves:"Supporting people, mentoring, building trust and morale.",
+   limits:"Overhelping, rescuing, avoiding accountability.",
+   recog:"I want to support, help, or take it off their plate.",
+   pivot:{lead:"Lead with empathy \u2014 without dropping the standard.", say:"What do they need \u2014 and what's still mine to hold them to?"}},
+  {n:5, name:"Opportunity",     mantra:"\u201cWhat opportunity exists here?\u201d", band:"ana", color:"var(--l5)",
+   desc:"Reframing, collaboration, win-win.",
+   serves:"Reframing, collaborating, negotiating win-win solutions.",
+   limits:"Jumping to possibility before accountability lands.",
+   recog:"I'm looking for the reframe and the win-win.",
+   pivot:{lead:"Reframe the problem as a shared opportunity.", say:"What opportunity exists here that we're both missing?"}},
+  {n:6, name:"Connection",      mantra:"\u201cWhat's the deeper purpose?\u201d", band:"ana", color:"var(--l6)",
+   desc:"Alignment, intuition, grounding the room.",
+   serves:"Grounding the room, accessing intuition, creating alignment.",
+   limits:"Too abstract when the moment needs action now.",
+   recog:"I sense the bigger purpose and the people in it with me.",
+   pivot:{lead:"Ground the room in the shared why.", say:"What's the deeper purpose underneath this?"}},
+  {n:7, name:"Creation",        mantra:"\u201cWhat can we create from here?\u201d", band:"ana", color:"var(--l7)",
+   desc:"Vision, possibility, building something new. Rare and brief.",
+   serves:"Vision, big-picture creation, possibility with no attachment to outcome.",
+   limits:"Ungrounded \u2014 detached from the action a moment may need now.",
+   recog:"I'm fully present, building from pure possibility.",
+   pivot:{lead:"Open to what's possible \u2014 then anchor it to a next step.", say:"What could we create from here that doesn't exist yet?"}},
 ];
 const L = n => LEVELS[n-1];
 
 const ARENAS = {
   clients:{
-    name:"Clients", tag:"injured, anxious, all-in",
-    needs:[4,5], primary:5,
-    trap:"Your client arrives at Level 1 (fear \u2014 \u201cwhy me\u201d) or Level 2 (rage \u2014 \u201cmake them pay\u201d). Match their energy and you both sink. Over-rescue at Level 4 and the boundaries go: midnight texts, over-promised outcomes, every case carried like it's your own.",
-    move:"Acknowledge their energy out loud \u2014 then model one level up. Don't argue them out of fear; give them somewhere higher to stand: a path, a next step, a realistic picture of what a win looks like. You become the calm reference point that lets them climb."
+    name:"Clients", tag:"upset, anxious, all-in",
+    defaultTo:[1,2], needs:[4,3], primary:4,
+    trap:"A client in distress pulls you toward their level \u2014 L1 overwhelm or L2 defensiveness. Match it and you both sink. The job is to regulate your own energy instead of absorbing theirs.",
+    move:"The table needs L4 empathy + L3 plan. Acknowledge what they're feeling, then give them a concrete next step to stand on. You don't have to match their energy \u2014 you set the energy they calibrate to."
   },
   employees:{
     name:"Employees", tag:"your team, your reports",
-    needs:[5,6], primary:5,
-    trap:"Level 2 when something slips (a sharp tone, blame) and Level 4 quietly reabsorbing the work you just delegated. Both teach the team the same thing: they can't be trusted to rise \u2014 which guarantees they won't.",
-    move:"Coach, don't rescue. Ask what they'd try before you supply the answer. Frame the fire drill as a chance to step up. Remember the team mirrors your energy faster than it follows your instructions \u2014 your Monday tone is the office's Wednesday baseline."
+    defaultTo:[2], needs:[3,4], primary:3,
+    trap:"When an employee makes a mistake, the default is L2 frustration \u2014 blame, sharp tone, control. It protects the standard but it teaches fear, not growth.",
+    move:"The table needs L3 clarity + L4 support. Name what happened and why it matters (accountability), then ask what support was missing (empathy). Both, in that order \u2014 the standard holds and the person grows."
+  },
+  team:{
+    name:"The Team", tag:"burned out, stretched thin",
+    defaultTo:[3], needs:[4,5], primary:4,
+    trap:"A burned-out team pulls you into L3 push-through \u2014 just grind it out, hit the next deadline. It moves work but it empties the room.",
+    move:"The table needs L4 support + L5 reframe. Acknowledge the load first, then reframe what's possible: what we can drop, trade, or do differently. People follow energy, not exhortation \u2014 yours sets the room's."
   },
   coworkers:{
-    name:"Co-workers", tag:"the people beside you",
-    needs:[4,6], primary:6,
-    trap:"Level 2 turf \u2014 who owns this, who gets the credit, defensiveness about your lane. It's the fastest way to turn an ally into a rival over something neither of you will remember next quarter.",
-    move:"Name the shared goal first, before roles. Anchor on the outcome you both want, and let credit take care of itself \u2014 it's abundant when the work lands. Connection beats competition every time the two of you have to keep working together."
-  },
-  peers:{
-    name:"Peers", tag:"other attorneys, your equals",
-    needs:[5,6], primary:5,
-    trap:"Level 2 comparison and competition \u2014 or its mirror, Level 1, quietly measuring yourself short against them. Both distort your judgment and make you smaller in the room than you are.",
-    move:"Play the long game: referrals, reputation, and what you can learn outlast any single comparison. Trade scorekeeping for curiosity \u2014 \u201cwhat can I take from how they handled that?\u201d \u2014 and the whole network gets warmer toward you."
+    name:"Co-workers", tag:"peers beside you, negotiations",
+    defaultTo:[2], needs:[5,3], primary:5,
+    trap:"A difficult exchange with a peer or counterpart pulls you toward L2 combativeness \u2014 turf, credit, winning the point. It's the fast way to turn an ally into a rival.",
+    move:"The table needs L5 collaboration / L3 strategy. Reframe toward the shared win and the practical path to it. Connection and a clear plan outlast any point scored."
   },
   opposing:{
-    name:"Opposing Counsel", tag:"the toggle",
-    needs:[2,5], primary:5, special:true,
-    trap:"Reactive Level 2. Anger that leaks your buttons, escalates a matter that wanted a phone call, and tells a sharp adversary exactly which lever moves you. The danger isn't using Level 2 \u2014 it's letting them choose it for you.",
-    move:"This is the one table where Level 2 is a legitimate tool \u2014 but only on purpose. First step OFF autopilot (pause, breathe, name it). THEN decide: does this moment want pressure, or a path to yes? The same email carries two completely different energies. You pick which one it carries."
+    name:"Opposing Counsel", tag:"the deliberate toggle",
+    defaultTo:[2], needs:[2,5], primary:5, special:true,
+    trap:"Reactive L2 \u2014 anger that leaks your buttons and tells a sharp adversary exactly which lever moves you. The danger isn't using L2; it's letting them choose it for you.",
+    move:"This is the table where L2 is a legitimate tool \u2014 but only on purpose. Run W.I.N. first: witness the energy, interpret what the moment needs, then navigate deliberately to pressure (L2) or a path to yes (L5). You pick the energy the email carries."
   }
 };
 
@@ -353,13 +419,15 @@ function chip(n){
 
 function renderPanel(key){
   const a = ARENAS[key];
+  const defaultChips = a.defaultTo.map(chip).join('');
   const needsChips = a.needs.map(chip).join('');
   const result = document.getElementById('result');
   result.innerHTML = `
     <div class="panel">
       <div class="panel-head">
         <h3>${a.name}</h3>
-        <div class="needs-row"><span class="chip-label">Energy this calls for</span>${needsChips}</div>
+        <div class="needs-row"><span class="chip-label">You may default to</span>${defaultChips}</div>
+        <div class="needs-row"><span class="chip-label">The table may need</span>${needsChips}</div>
       </div>
       <div class="panel-body">
         <div class="block trap">
@@ -370,12 +438,30 @@ function renderPanel(key){
           <div class="bh"><span class="ic">&#10003;</span>The leadership move</div>
           <p>${a.move}</p>
         </div>
-        <div class="picker-wrap">
-          <div class="picker-q">Right now, before this interaction \u2014 where are you?</div>
-          <div class="lvl-row" id="lvlRow">
-            ${LEVELS.map(l=>`<button class="lvl-btn" data-n="${l.n}"><span class="sw" style="background:${l.color}"></span>${l.n} · ${l.name}</button>`).join('')}
+
+        <div class="tap-wrap">
+          <div class="tap-intro">Now run <b>W.I.N.</b> on this table \u2014 the pause button between reaction and intention.</div>
+
+          <div class="tap-step">
+            <div class="tap-letter" style="background:var(--l1)">W</div>
+            <div class="tap-content">
+              <div class="tap-name">Witness the Energy</div>
+              <div class="tap-desc">Notice what's happening in real time. What energy am I bringing? Be honest \u2014 pick the level you're actually in right now.</div>
+              <div class="lvl-row" id="lvlRow">
+                ${LEVELS.map(l=>`<button class="lvl-btn" data-n="${l.n}"><span class="sw" style="background:${l.color}"></span>${l.n} · ${l.name}</button>`).join('')}
+              </div>
+              <div class="listen-block">
+                <div class="listen-q">And how am I listening?</div>
+                <div class="listen-grid">
+                  <div class="listen-mode"><b>Subjectively</b><span>Through my own agenda and need to respond. Keeps me reacting \u2014 traps me at L1\u2013L2.</span></div>
+                  <div class="listen-mode"><b>Objectively</b><span>For the facts \u2014 what actually happened, what's being said. Supports L3 clarity.</span></div>
+                  <div class="listen-mode"><b>Intuitively</b><span>For what's beneath \u2014 emotion, fear, unspoken need. Unlocks L4\u2013L6.</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div id="shift"></div>
+
+          <div id="tapResult"></div>
         </div>
       </div>
     </div>`;
@@ -386,62 +472,83 @@ function renderPanel(key){
     const b = e.target.closest('.lvl-btn');
     if(!b) return;
     [...row.children].forEach(c=>c.classList.toggle('sel', c===b));
-    renderShift(key, +b.dataset.n);
+    renderTAP(key, +b.dataset.n);
   });
 }
 
-function moveStep(num, color, text){
-  return `<div class="move-step"><div class="ms-num" style="background:${color}">${num}</div><div class="ms-text">${text}</div></div>`;
+function tapBlock(letter, color, name, descHtml){
+  return `<div class="tap-step">
+      <div class="tap-letter" style="background:${color}">${letter}</div>
+      <div class="tap-content">
+        <div class="tap-name">${name}</div>
+        ${descHtml}
+      </div>
+    </div>`;
 }
 
-function renderShift(key, current){
+function renderTAP(key, current){
   const a = ARENAS[key];
-  const target = a.primary;
   const cur = L(current);
-  const tgt = L(target);
-  const shift = document.getElementById('shift');
-  let steps = '';
-  let head = '';
-  let recog = cur.recog ? `<div class="shift-recog">Sounds like: \u201c${cur.recog}\u201d</div>` : '';
+  const out = document.getElementById('tapResult');
 
-  // ---------- opposing counsel: the deliberate toggle ----------
+  // recognition line for the level they're in
+  const recog = cur.recog ? `<div class="tap-recog">Sounds like: \u201c${cur.recog}\u201d</div>` : '';
+
+  // ---------- INTERPRET ----------
+  const helping = a.needs.includes(current);
+  let assessHtml;
+  if(helping){
+    assessHtml = `<div class="tap-desc">You're already in an energy this table can use. <b>The risk is staying too long</b> \u2014 or sliding down if it gets tense. Read it honestly: is this still creating clarity, or am I leaning on it out of habit?</div>`;
+  } else if(cur.band==="cat"){
+    assessHtml = `<div class="tap-desc">You're in a draining level (${cur.n} · ${cur.name}). <b>It's escalating, not calming \u2014 and it's costing you here.</b> ${cur.limits} This table needs ${a.needs.map(n=>L(n).n+' · '+L(n).name).join(' and ')} instead.</div>`;
+  } else {
+    assessHtml = `<div class="tap-desc">${cur.name} has its uses \u2014 but watch the trap: ${cur.limits} This table is asking for ${a.needs.map(n=>L(n).n+' · '+L(n).name).join(' / ')}.</div>`;
+  }
+  assessHtml += `<div class="tap-q">Ask: is this energy helping or hurting? Escalating or calming? Creating clarity or confusion \u2014 and what does this moment actually need?</div>`;
+
+  // ---------- NAVIGATE ----------
+  let pivotHtml = '';
   if(a.special){
-    head = `<div class="shift-head">From <b>Level ${current} · ${cur.name}</b> \u2014 step off autopilot, then choose your weapon.</div>`;
-    let n=1, s='';
-    if(current<=2){
-      s += moveStep(n++, cur.color, `<b>${cur.exit.lead}</b> ${cur.exit.body}<span class="say">${cur.exit.say}</span>`);
-    } else {
-      s += moveStep(n++, cur.color, `<b>You're already off the reactive floor.</b> Good \u2014 you have a clear head to decide from. Don't waste it defaulting to nice <em>or</em> aggressive.`);
+    // opposing counsel: deliberate toggle
+    pivotHtml = `<div class="tap-desc">This is the one table where dropping <em>into</em> a level can be the right call \u2014 as long as it's deliberate. Choose the energy that serves the outcome:</div>`;
+    pivotHtml += `<div class="pivot-fork">
+        <div class="fork-opt" style="border-color:var(--l2)">
+          <div class="fork-head" style="color:var(--l2)">If it wants directness \u2014 L2 Conflict</div>
+          Controlled, specific, deadline-backed. Pressure as a tool, not a tantrum.
+          <span class="say">Here's the line, here's the consequence, here's the date.</span>
+        </div>
+        <div class="fork-opt" style="border-color:var(--l5)">
+          <div class="fork-head" style="color:var(--gold-deep)">If it wants collaboration \u2014 L5 Opportunity</div>
+          A settlement isn't surrender; it's a win they can close their file on too.
+          <span class="say">What number ends this well for both sides?</span>
+        </div>
+      </div>`;
+  } else if(helping){
+    pivotHtml = `<div class="tap-desc"><b>No shift needed \u2014 hold this level on purpose.</b> If you feel the pull toward the trap above, use the reset below and choose your way back to it.</div>`;
+  } else {
+    const primary = L(a.primary);
+    pivotHtml = `<div class="tap-desc">Navigate to what the table needs. Land on <b>${primary.n} · ${primary.name}</b>:</div>`;
+    pivotHtml += `<div class="pivot-land" style="border-color:${primary.color}">
+        <div class="fork-head" style="color:${primary.color==='var(--l5)'?'var(--gold-deep)':primary.color}">${primary.pivot.lead}</div>
+        <span class="say">${primary.pivot.say}</span>
+      </div>`;
+    // if the table needs two levels, name the second as the pairing
+    const second = a.needs.find(n=>n!==a.primary);
+    if(second){
+      const s=L(second);
+      pivotHtml += `<div class="tap-pair">Pair it with <b>${s.n} · ${s.name}</b> \u2014 ${s.pivot.lead.toLowerCase()} <span class="say-inline">\u201c${s.pivot.say}\u201d</span></div>`;
     }
-    s += moveStep(n++, "var(--l2)", `<b>If the moment wants leverage</b> \u2014 step <em>deliberately</em> into Level 2. Controlled, specific, deadline-backed. Pressure as a tool, not a tantrum.<span class="say">Here's the line, here's the consequence, here's the date.</span>`);
-    s += moveStep(n++, "var(--l5)", `<b>If the moment wants resolution</b> \u2014 climb to Level 5. A settlement isn't surrender; it's a win they can close their file on too.<span class="say">What number ends this well for both sides?</span>`);
-    steps = s;
-    shift.innerHTML = `<div class="shift">${head}${recog}${steps}</div>`;
-    return;
   }
 
-  // ---------- already at/above target ----------
-  if(current>=target){
-    head = `<div class="shift-head">You're at <b>Level ${current} · ${cur.name}</b> \u2014 right where this table needs you.</div>`;
-    const body = `<p class="already">Don't shift \u2014 <b>protect it.</b> The only risk now is sliding down when the interaction gets tense. If you feel the pull toward the trap above, use the ten-second reset below and come back to this level on purpose.</p>`;
-    shift.innerHTML = `<div class="shift">${head}${recog}${body}</div>`;
-    return;
-  }
+  const reset = (!helping || a.special)
+    ? `<div class="reset-note"><b>Can't think your way up?</b> Drop into your body first \u2014 one slow breath out (longer than the in-breath), unclench your jaw and your grip, name the feeling silently. The shift gets easy once the adrenaline drops.</div>`
+    : '';
 
-  // ---------- climb: exit current, arrive at target ----------
-  head = `<div class="shift-head">Shift from <b>Level ${current} · ${cur.name}</b> &rarr; <b>Level ${target} · ${tgt.name}</b></div>`;
-  let n=1, s='';
-  s += moveStep(n++, cur.color, `<b>${cur.exit.lead}</b> ${cur.exit.body}<span class="say">${cur.exit.say}</span>`);
-  // if jumping more than one anabolic rung, add a bridge through 5 when target is 6
-  if(target===6 && current<5){
-    const five=L(5);
-    s += moveStep(n++, five.color, `<b>${five.arrive.lead}</b> Get to options first \u2014 it's the doorway.<span class="say">${five.arrive.say}</span>`);
-  }
-  s += moveStep(n++, tgt.color, `<b>Land here:</b> ${tgt.arrive.lead}${tgt.arrive.say?`<span class="say">${tgt.arrive.say}</span>`:''}`);
-  steps = s;
-
-  const reset = `<div class="reset-note"><b>The ten-second reset</b> &mdash; if you can't think your way up, drop into your body first: one slow breath out (longer than the breath in), unclench your jaw and your grip, name the feeling silently. The level shift gets easy once the adrenaline drops.</div>`;
-  shift.innerHTML = `<div class="shift">${head}${recog}${steps}</div>${reset}`;
+  out.innerHTML = `
+    ${recog}
+    ${tapBlock('I','var(--l3)','Interpret the Moment', assessHtml)}
+    ${tapBlock('N', a.special?'var(--l5)':(L(a.primary).color), 'Navigate the Shift', pivotHtml)}
+    ${reset}`;
 }
 </script>
 </body>
