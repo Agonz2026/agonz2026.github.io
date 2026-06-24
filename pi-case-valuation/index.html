@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PI Case Valuation Tool — Florida</title>
+<style>
+  :root{--navy:#1F3864;--blue:#2E5496;--accent:#C45911;--green:#2E7D32;--bg:#f4f6f9;--card:#fff;--line:#e2e6ee;--ink:#1c2330;--muted:#6b7280;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.4;}
+  .wrap{max-width:980px;margin:0 auto;padding:20px;}
+  header{background:var(--navy);color:#fff;border-radius:10px;padding:18px 22px;margin-bottom:18px;}
+  header h1{margin:0 0 4px;font-size:20px;}
+  header p{margin:0;font-size:12px;opacity:.85;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:18px;}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);margin:0 0 12px;border-bottom:2px solid var(--line);padding-bottom:6px;}
+  label{display:block;font-size:12px;color:var(--muted);margin:10px 0 3px;}
+  .hint{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px;}
+  input,select{width:100%;padding:7px 9px;border:1px solid #cdd3df;border-radius:6px;font-size:14px;font-family:inherit;background:#fff;}
+  input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px rgba(46,84,150,.15);}
+  .pair{display:flex;gap:10px;}.pair>div{flex:1;}
+  .res{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;position:sticky;top:18px;}
+  .bigrange{background:var(--navy);color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:14px;}
+  .bigrange .lab{font-size:11px;text-transform:uppercase;letter-spacing:.05em;opacity:.8;}
+  .bigrange .val{font-size:26px;font-weight:bold;margin-top:4px;}
+  .line{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px;}
+  .line:last-child{border-bottom:none;}
+  .line .k{color:var(--muted);} .line .v{font-weight:bold;font-variant-numeric:tabular-nums;}
+  .demand{background:#fff7ed;border:1px solid #fbd9b4;color:var(--accent);border-radius:8px;padding:10px 12px;margin:12px 0;display:flex;justify-content:space-between;font-weight:bold;}
+  .badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:bold;}
+  .b-below{background:#fde8e8;color:#b42318;}.b-within{background:#e7f6ec;color:#1e7a37;}.b-above{background:#e6f0fb;color:#1d4ed8;}
+  .warn{background:#fde8e8;color:#b42318;border-radius:8px;padding:9px 12px;font-weight:bold;font-size:13px;margin-bottom:12px;display:none;}
+  .offerbox{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:8px;}
+  .disc{font-size:11px;color:var(--muted);font-style:italic;margin-top:14px;line-height:1.5;}
+  details{margin-top:14px;font-size:12px;color:#374151;}
+  summary{cursor:pointer;color:var(--blue);font-weight:bold;}
+  details p{margin:8px 0;}
+  .btn{margin-top:14px;width:100%;padding:9px;border:none;border-radius:6px;background:var(--blue);color:#fff;font-weight:bold;cursor:pointer;font-size:13px;}
+  .btn:hover{background:#24447c;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Personal Injury Case Valuation Tool</h1>
+    <p>Florida &nbsp;•&nbsp; Hybrid multiplier + per-diem range &nbsp;•&nbsp; For demand prep &amp; offer evaluation</p>
+  </header>
+
+  <div class="grid">
+    <!-- INPUTS -->
+    <div>
+      <div class="card">
+        <h2>1 · Economic Damages (Specials — recoverable)</h2>
+        <label>Past medical bills (billed)</label><input type="number" id="pastMed" value="0" min="0">
+        <label>Future medical costs (estimated)</label><input type="number" id="futMed" value="0" min="0">
+        <label>Past lost wages</label><input type="number" id="pastWage" value="0" min="0">
+        <label>Future lost earnings / capacity</label><input type="number" id="futWage" value="0" min="0">
+        <label>Other out-of-pocket (mileage, meds, devices)</label><input type="number" id="other" value="0" min="0">
+        <div class="hint">Property damage is not a recoverable element of the injury claim — enter it under Case Characteristics as a causation signal.</div>
+      </div>
+
+      <div class="card">
+        <h2>2 · Pain &amp; Suffering — Method A: Multiplier</h2>
+        <label>Injury severity</label>
+        <select id="sev"></select>
+        <div class="hint" id="sevDesc"></div>
+        <div class="pair" style="margin-top:8px;">
+          <div><label>Override mult — low</label><input type="number" id="ovLow" placeholder="auto" step="0.1" min="0"></div>
+          <div><label>Override mult — high</label><input type="number" id="ovHigh" placeholder="auto" step="0.1" min="0"></div>
+        </div>
+        <div class="hint">Leave blank to use the suggested multiplier for the chosen severity. Applied to medical specials.</div>
+      </div>
+
+      <div class="card">
+        <h2>3 · Pain &amp; Suffering — Method B: Per Diem</h2>
+        <div class="pair">
+          <div><label>Daily rate — low</label><input type="number" id="pdLow" value="150" min="0"></div>
+          <div><label>Daily rate — high</label><input type="number" id="pdHigh" value="300" min="0"></div>
+        </div>
+        <label>Days of pain / impact</label><input type="number" id="days" value="0" min="0">
+        <div class="hint">Typically injury date → maximum medical improvement. Set 0 to skip this method.</div>
+      </div>
+
+      <div class="card">
+        <h2>4 · Case Characteristics</h2>
+        <label>Permanent impairment rating — whole-person %</label><input type="number" id="pir" value="0" min="0" max="100">
+        <div class="hint">From treating physician / IME (AMA Guides). Factor = 1 + (% × 1.5), capped 1.6×.</div>
+        <label>Client age (years)</label><input type="number" id="age" value="40" min="0" max="120">
+        <div class="hint">Younger client with a permanent injury = longer pain &amp; suffering.</div>
+        <label>Prior accidents / injuries</label>
+        <select id="prior"></select>
+        <div class="hint">Prior injury to the same body part invites causation/apportionment defenses.</div>
+        <label>Property damage $ (signal only — not recoverable)</label><input type="number" id="prop" value="0" min="0">
+        <div class="hint">Not added to value. Low PD vs. high bills = causation exposure.</div>
+        <label>Vehicle / impact severity</label>
+        <select id="impact"></select>
+        <div id="causation" class="hint" style="margin-top:8px;font-weight:bold;"></div>
+      </div>
+
+      <div class="card">
+        <h2>5 · Risk Adjustments</h2>
+        <label>Liability strength</label>
+        <select id="liab"></select>
+        <label>Client comparative fault %</label><input type="number" id="fault" value="0" min="0" max="100">
+        <div class="hint">Florida: client &gt; 50% at fault recovers nothing (2023 HB 837).</div>
+        <label>Available policy limits (0 = unknown / none)</label><input type="number" id="policy" value="0" min="0">
+        <div class="hint">Final value is capped here when greater than 0.</div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div>
+      <div class="res">
+        <h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);margin:0 0 12px;">Valuation</h2>
+        <div class="warn" id="warn">⚠ Client &gt; 50% at fault — barred from recovery in Florida.</div>
+        <div class="bigrange">
+          <div class="lab">Settlement Target Range</div>
+          <div class="val" id="targetRange">$0 – $0</div>
+        </div>
+        <div class="demand"><span>Opening demand</span><span id="demand">$0</span></div>
+
+        <div class="line"><span class="k">Total economic damages</span><span class="v" id="econ">$0</span></div>
+        <div class="line"><span class="k">Non-econ base (low – high)</span><span class="v" id="nebase">$0 – $0</span></div>
+        <div class="line"><span class="k">Characteristics modifier</span><span class="v" id="compMod">1.00×</span></div>
+        <div class="line"><span class="k">Adj. non-economic (low – high)</span><span class="v" id="noneco">$0 – $0</span></div>
+        <div class="line"><span class="k">Gross value (low – high)</span><span class="v" id="gross">$0 – $0</span></div>
+        <div class="line"><span class="k">Liability factor</span><span class="v" id="lf">100%</span></div>
+        <div class="line"><span class="k">Fault reduction</span><span class="v" id="fr">0%</span></div>
+        <div class="line"><span class="k">Settlement floor</span><span class="v" id="floor">$0</span></div>
+        <div class="line"><span class="k">FL permanency threshold</span><span class="v" id="thresh" style="font-size:11px;text-align:right;max-width:55%;">—</span></div>
+
+        <div class="offerbox">
+          <label style="margin-top:0;">Evaluate an insurance offer</label>
+          <input type="number" id="offer" placeholder="enter offer amount" min="0">
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;">
+            <span class="k" style="color:var(--muted);font-size:12px;">Assessment</span>
+            <span id="offerBadge" class="badge b-within">—</span>
+          </div>
+          <div class="line" style="margin-top:6px;"><span class="k">% of target midpoint</span><span class="v" id="offerPct">—</span></div>
+        </div>
+
+        <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+
+        <details>
+          <summary>Methodology &amp; Florida notes</summary>
+          <p><b>Hybrid range:</b> non-economic damages are estimated two ways — medical specials × a severity multiplier, and a daily rate × pain days. The low end is the lower of the two methods, the high end is the higher.</p>
+          <p><b>Case characteristics:</b> permanent impairment %, client age, prior-injury history and impact severity combine into one modifier (capped 0.4×–2.0×) applied to the non-economic range. Impairment factor = 1 + (whole-person % × 1.5), max 1.6×; age scales for years of future pain; prior same-part injuries reduce value for causation/apportionment risk.</p>
+          <p><b>Property damage:</b> not a recoverable element of the injury claim, so it is never added to value. It is used only as a causation/severity signal — low PD against high medicals flags causation exposure; a totaled vehicle supports causation and nudges value up via the impact factor.</p>
+          <p><b>Adjustments:</b> gross value × liability factor, then reduced by the client's comparative fault %, then capped at policy limits if entered.</p>
+          <p><b>Florida law:</b> modified comparative negligence (Fla. Stat. §768.81, amended 2023) bars recovery above 50% fault and reduces it at or below. No-fault/PIP ($10k) applies to auto; a bodily-injury claim generally needs to meet the permanent-injury threshold (§627.737) before non-economic damages are recoverable. No general cap on non-economic damages in ordinary auto/PI cases.</p>
+          <p class="disc">Estimate only — not legal advice. Every case turns on venue, witnesses, client presentation, treatment gaps and prior injuries. Attorney review required before any demand or acceptance.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SEV = [
+  {n:"1 — Minor (soft tissue, full recovery)", lo:1.5, hi:2.5, d:"Sprains/strains, conservative care, no residuals"},
+  {n:"2 — Moderate (treatment, minor residual)", lo:2.5, hi:3.5, d:"Injections, PT, some lasting discomfort"},
+  {n:"3 — Serious (surgery / objective injury)", lo:3.5, hi:4.5, d:"Fracture, surgery, MRI-confirmed injury"},
+  {n:"4 — Severe (permanent / disfigurement)", lo:4.5, hi:6.0, d:"Permanent impairment, scarring, chronic pain"},
+  {n:"5 — Catastrophic (disability, brain/spinal)", lo:5.0, hi:10.0, d:"TBI, paralysis, amputation, lifelong care"},
+];
+const LIAB = [
+  {n:"Clear / strong", f:1.00},
+  {n:"Probable", f:0.85},
+  {n:"Disputed", f:0.65},
+  {n:"Weak / questionable", f:0.40},
+];
+// age bracket: [minAge, factor]
+const AGE = [[0,1.15],[18,1.15],[30,1.05],[50,1.00],[65,0.92],[80,0.85]];
+const PRIOR = [
+  {n:"None / clean history", f:1.00},
+  {n:"Prior — unrelated body part", f:0.97},
+  {n:"Prior — same body part (documented)", f:0.80},
+  {n:"Prior — same part + recent treatment", f:0.70},
+];
+const IMPACT = [
+  {n:"Severe — totaled / major impact", f:1.10},
+  {n:"Moderate — drivable with damage", f:1.00},
+  {n:"Minor — cosmetic / low impact", f:0.85},
+];
+const sevSel=document.getElementById('sev'), liabSel=document.getElementById('liab'),
+      priorSel=document.getElementById('prior'), impactSel=document.getElementById('impact');
+SEV.forEach((s,i)=>sevSel.add(new Option(s.n,i)));
+LIAB.forEach((l,i)=>liabSel.add(new Option(l.n,i)));
+PRIOR.forEach((p,i)=>priorSel.add(new Option(p.n,i)));
+IMPACT.forEach((p,i)=>impactSel.add(new Option(p.n,i)));
+function ageFactor(a){let f=AGE[0][1];for(const[m,v]of AGE){if(a>=m)f=v;}return f;}
+
+const $=id=>document.getElementById(id);
+const num=id=>{const v=parseFloat($(id).value);return isNaN(v)?0:v;};
+const fmt=v=>'$'+Math.round(v).toLocaleString('en-US');
+const pct=v=>(v*100).toFixed(1)+'%';
+
+function calc(){
+  const econ = num('pastMed')+num('futMed')+num('pastWage')+num('futWage')+num('other');
+  const medSpec = num('pastMed')+num('futMed');
+  const s = SEV[+sevSel.value];
+  $('sevDesc').textContent = s.d;
+  const mLo = $('ovLow').value!==''?num('ovLow'):s.lo;
+  const mHi = $('ovHigh').value!==''?num('ovHigh'):s.hi;
+  const aLo = medSpec*mLo, aHi = medSpec*mHi;
+  const bLo = num('pdLow')*num('days'), bHi = num('pdHigh')*num('days');
+
+  // blend: if both methods >0 use min for low; else whichever is non-zero
+  const baseLo = (aLo>0 && bLo>0) ? Math.min(aLo,bLo) : Math.max(aLo,bLo);
+  const baseHi = Math.max(aHi,bHi);
+
+  // case characteristics modifier (applies to non-economic only)
+  const pir = Math.min(num('pir'),100)/100;
+  const impF = 1 + Math.min(pir,0.40)*1.5;          // capped at 1.6x
+  const ageF = ageFactor(num('age'));
+  const priorF = PRIOR[+priorSel.value].f;
+  const impactF = IMPACT[+impactSel.value].f;
+  const comp = Math.max(0.4, Math.min(2, impF*ageF*priorF*impactF));
+  const neLo = baseLo*comp, neHi = baseHi*comp;
+
+  // property-damage causation check (PD not added to value)
+  const pd = num('prop'); const cz = $('causation');
+  if(pd>0 && medSpec>0 && pd < medSpec*0.15){ cz.textContent='⚠ LOW property damage vs. high medicals — causation exposure'; cz.style.color='#b42318'; }
+  else if(IMPACT[+impactSel.value].n.startsWith('Severe')){ cz.textContent='High impact — causation & damages well-supported'; cz.style.color='#1e7a37'; }
+  else if(pd===0){ cz.textContent='Enter PD to run causation check'; cz.style.color='#6b7280'; }
+  else { cz.textContent='Property damage consistent with claimed injuries'; cz.style.color='#1e7a37'; }
+
+  const grossLo = econ+neLo, grossHi = econ+neHi;
+  const lf = LIAB[+liabSel.value].f;
+  const fault = Math.min(num('fault'),100)/100;
+  const policy = num('policy');
+  const barred = fault>0.5;
+
+  let tLo, tHi;
+  if(barred){ tLo=0; tHi=0; }
+  else {
+    tLo = grossLo*lf*(1-fault);
+    tHi = grossHi*lf*(1-fault);
+    if(policy>0){ tLo=Math.min(tLo,policy); tHi=Math.min(tHi,policy); }
+  }
+  const demand = grossHi*1.2;
+
+  $('warn').style.display = barred?'block':'none';
+  $('targetRange').textContent = fmt(tLo)+' – '+fmt(tHi);
+  $('demand').textContent = barred?'—':fmt(demand);
+  $('econ').textContent = fmt(econ);
+  $('nebase').textContent = fmt(baseLo)+' – '+fmt(baseHi);
+  $('compMod').textContent = comp.toFixed(2)+'×';
+  $('noneco').textContent = fmt(neLo)+' – '+fmt(neHi);
+  $('gross').textContent = fmt(grossLo)+' – '+fmt(grossHi);
+  $('thresh').textContent = pir>0 ? 'likely met (impairment shown)' : 'confirm — no impairment %';
+  $('thresh').style.color = pir>0 ? '#1e7a37' : '#b42318';
+  $('lf').textContent = pct(lf);
+  $('fr').textContent = pct(fault);
+  $('floor').textContent = fmt(tLo);
+
+  // offer eval
+  const offV = $('offer').value;
+  const badge=$('offerBadge'), pctEl=$('offerPct');
+  if(offV===''||tHi===0){ badge.textContent='—'; badge.className='badge b-within'; pctEl.textContent='—'; }
+  else{
+    const o=parseFloat(offV); const mid=(tLo+tHi)/2;
+    if(o<tLo){ badge.textContent='BELOW target — counter'; badge.className='badge b-below'; }
+    else if(o>tHi){ badge.textContent='AT / ABOVE target — strong'; badge.className='badge b-above'; }
+    else { badge.textContent='WITHIN target range'; badge.className='badge b-within'; }
+    pctEl.textContent = mid>0 ? (o/mid*100).toFixed(0)+'%' : '—';
+  }
+}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',calc));
+sevSel.value=0; liabSel.value=0; priorSel.value=0; impactSel.value=1; calc();
+</script>
+</body>
+</html>
